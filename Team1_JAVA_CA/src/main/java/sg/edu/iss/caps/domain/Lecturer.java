@@ -3,6 +3,8 @@ package sg.edu.iss.caps.domain;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -13,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Lecturer 
 {
+	
 	@Id
 	private String lecturerId;
 	private String firstName;
@@ -21,8 +24,10 @@ public class Lecturer
 	@DateTimeFormat (pattern="dd-MM-yyyy")
 	private String dateOfJoining;
 	private String email;
-	@ManyToMany
-	private List<Course> courses;
+	
+	@OneToMany(mappedBy="lecturer")
+	private List<CourseLecturer> courselecturer;
+	
 	
 	
 	
@@ -33,8 +38,10 @@ public class Lecturer
 
 
 
+
+
 	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, String dateOfJoining,
-			String email, List<Course> courses) {
+			String email, List<CourseLecturer> courselecturer) {
 		super();
 		this.lecturerId = lecturerId;
 		this.firstName = firstName;
@@ -42,8 +49,10 @@ public class Lecturer
 		this.lastName = lastName;
 		this.dateOfJoining = dateOfJoining;
 		this.email = email;
-		this.courses = courses;
+		this.courselecturer = courselecturer;
 	}
+
+
 
 
 
@@ -53,9 +62,13 @@ public class Lecturer
 
 
 
+
+
 	public void setLecturerId(String lecturerId) {
 		this.lecturerId = lecturerId;
 	}
+
+
 
 
 
@@ -65,9 +78,13 @@ public class Lecturer
 
 
 
+
+
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+
 
 
 
@@ -77,9 +94,13 @@ public class Lecturer
 
 
 
+
+
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+
+
 
 
 
@@ -89,9 +110,13 @@ public class Lecturer
 
 
 
+
+
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+
 
 
 
@@ -101,9 +126,13 @@ public class Lecturer
 
 
 
+
+
 	public void setDateOfJoining(String dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
+
+
 
 
 
@@ -113,34 +142,42 @@ public class Lecturer
 
 
 
+
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 
 
-	public List<Course> getCourses() {
-		return courses;
+
+
+	public List<CourseLecturer> getCourselecturer() {
+		return courselecturer;
 	}
 
 
 
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
+
+
+	public void setCourselecturer(List<CourseLecturer> courselecturer) {
+		this.courselecturer = courselecturer;
 	}
+
+
 
 
 
 	@Override
 	public String toString() {
 		return "Lecturer [lecturerId=" + lecturerId + ", firstName=" + firstName + ", middleName=" + middleName
-				+ ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + ", email=" + email + ", courses="
-				+ courses + "]";
+				+ ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + ", email=" + email
+				+ ", courselecturer=" + courselecturer + "]";
 	}
-	
-	
-	 
-	
+
+
+
+
 	
 
 }

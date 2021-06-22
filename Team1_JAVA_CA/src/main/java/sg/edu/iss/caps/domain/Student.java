@@ -1,9 +1,12 @@
 package sg.edu.iss.caps.domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -18,8 +21,8 @@ public class Student
 	@DateTimeFormat (pattern="dd-MM-yyyy")
 	private Date admissionDate;
 	private String email;
-	private String category;
-	
+	@OneToMany(mappedBy="student")
+	private List<Enrolment> enrolment;
 	
 	
 	
@@ -29,9 +32,8 @@ public class Student
 
 
 
-
 	public Student(String studentId, String firstName, String middleName, String lastName, Date admissionDate,
-			String email, String category) {
+			String email, List<Enrolment> enrolment) {
 		super();
 		this.studentId = studentId;
 		this.firstName = firstName;
@@ -39,9 +41,8 @@ public class Student
 		this.lastName = lastName;
 		this.admissionDate = admissionDate;
 		this.email = email;
-		this.category = category;
+		this.enrolment = enrolment;
 	}
-
 
 
 
@@ -51,11 +52,9 @@ public class Student
 
 
 
-
 	public void setStudentId(String studentId) {
 		this.studentId = studentId;
 	}
-
 
 
 
@@ -65,11 +64,9 @@ public class Student
 
 
 
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 
 
 
@@ -79,11 +76,9 @@ public class Student
 
 
 
-
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-
 
 
 
@@ -93,11 +88,9 @@ public class Student
 
 
 
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 
 
 
@@ -107,11 +100,9 @@ public class Student
 
 
 
-
 	public void setAdmissionDate(Date admissionDate) {
 		this.admissionDate = admissionDate;
 	}
-
 
 
 
@@ -121,37 +112,33 @@ public class Student
 
 
 
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
 
 
-
-	public String getCategory() {
-		return category;
+	public List<Enrolment> getEnrolment() {
+		return enrolment;
 	}
 
 
 
-
-	public void setCategory(String category) {
-		this.category = category;
+	public void setEnrolment(List<Enrolment> enrolment) {
+		this.enrolment = enrolment;
 	}
-
 
 
 
 	@Override
 	public String toString() {
 		return "Student [studentId=" + studentId + ", firstName=" + firstName + ", middleName=" + middleName
-				+ ", lastName=" + lastName + ", admissionDate=" + admissionDate + ", email=" + email + ", category="
-				+ category + "]";
+				+ ", lastName=" + lastName + ", admissionDate=" + admissionDate + ", email=" + email + ", enrolment="
+				+ enrolment + "]";
 	}
-	
-	
-	
+
+
+
 	
 
 }

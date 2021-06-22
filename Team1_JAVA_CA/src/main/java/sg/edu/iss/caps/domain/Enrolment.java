@@ -23,7 +23,7 @@ public class Enrolment
 	@ManyToOne
 	private Student student;
 	@ManyToOne
-	private Classes classes;
+	private Course course;
 	
 	
 	
@@ -35,27 +35,26 @@ public class Enrolment
 
 
 
-	public Enrolment(Date enrolmentDate, String grade, String status, Student student, Classes classes) {
+	public Enrolment(Date enrolmentDate, String grade, String status, Student student, Course course) {
 		super();
 		this.enrolmentDate = enrolmentDate;
 		this.grade = grade;
 		this.status = status;
 		this.student = student;
-		this.classes = classes;
+		this.course = course;
 	}
 
 
 
 
-	public Enrolment(int enrolmentId, Date enrolmentDate, String grade, String status, Student student,
-			Classes classes) {
+	public Enrolment(int enrolmentId, Date enrolmentDate, String grade, String status, Student student, Course course) {
 		super();
 		this.enrolmentId = enrolmentId;
 		this.enrolmentDate = enrolmentDate;
 		this.grade = grade;
 		this.status = status;
 		this.student = student;
-		this.classes = classes;
+		this.course = course;
 	}
 
 
@@ -131,15 +130,15 @@ public class Enrolment
 
 
 
-	public Classes getClasses() {
-		return classes;
+	public Course getCourse() {
+		return course;
 	}
 
 
 
 
-	public void setClasses(Classes classes) {
-		this.classes = classes;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 
@@ -148,11 +147,10 @@ public class Enrolment
 	@Override
 	public String toString() {
 		return "Enrolment [enrolmentId=" + enrolmentId + ", enrolmentDate=" + enrolmentDate + ", grade=" + grade
-				+ ", status=" + status + ", student=" + student + ", classes=" + classes + "]";
+				+ ", status=" + status + ", student=" + student + ", course=" + course + "]";
 	}
-	
-	
-	
+
+
 
 
 }

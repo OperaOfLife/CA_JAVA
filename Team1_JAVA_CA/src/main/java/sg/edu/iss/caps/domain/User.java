@@ -6,8 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Login 
+public class User
 {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
@@ -17,13 +18,13 @@ public class Login
 	
 	
 	
-	public Login() {
+	public User() {
 		super();
 	}
 
 
 
-	public Login(String username, String password, String userType) {
+	public User(String username, String password, String userType) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -32,7 +33,7 @@ public class Login
 
 
 
-	public Login(int id, String username, String password, String userType) {
+	public User(int id, String username, String password, String userType) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -92,9 +93,10 @@ public class Login
 
 	@Override
 	public String toString() {
-		return "Login [id=" + id + ", username=" + username + ", password=" + password + ", userType=" + userType + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userType=" + userType + "]";
 	}
 	
 	
-
+	
+	
 }

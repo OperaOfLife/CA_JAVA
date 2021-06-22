@@ -7,81 +7,55 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class ClassLecturer
+public class CourseLecturer
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@ManyToOne
-	private Classes classes;
+	private Course courses;
 	@ManyToOne
 	private Lecturer lecturer;
 	
 	
 	
-	public ClassLecturer() {
+	public CourseLecturer() {
 		super();
 	}
-
-
-
-	public ClassLecturer(Classes classes, Lecturer lecturer) {
+	public CourseLecturer(Course courses, Lecturer lecturer) {
 		super();
-		this.classes = classes;
+		this.courses = courses;
 		this.lecturer = lecturer;
 	}
-
-
-
-	public ClassLecturer(int id, Classes classes, Lecturer lecturer) {
+	public CourseLecturer(int id, Course courses, Lecturer lecturer) {
 		super();
 		this.id = id;
-		this.classes = classes;
+		this.courses = courses;
 		this.lecturer = lecturer;
 	}
-
-
-
+	
 	public int getId() {
 		return id;
 	}
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
-
-	public Classes getClasses() {
-		return classes;
+	public Course getCourses() {
+		return courses;
 	}
-
-
-
-	public void setClasses(Classes classes) {
-		this.classes = classes;
+	public void setCourses(Course courses) {
+		this.courses = courses;
 	}
-
-
-
 	public Lecturer getLecturer() {
 		return lecturer;
 	}
-
-
-
 	public void setLecturer(Lecturer lecturer) {
 		this.lecturer = lecturer;
 	}
-
-
-
+	
 	@Override
 	public String toString() {
-		return "ClassLecturer [id=" + id + ", classes=" + classes + ", lecturer=" + lecturer + "]";
+		return "CourseLecturer [id=" + id + ", courses=" + courses + ", lecturer=" + lecturer + "]";
 	}
-	
 	
 }

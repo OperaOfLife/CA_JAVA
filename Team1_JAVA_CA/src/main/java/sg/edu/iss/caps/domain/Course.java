@@ -19,18 +19,22 @@ public class Course
 	private String classSize;
 	private int credits;
 	private int duration;
-	@ManyToMany(mappedBy="courses")
-	private List<Lecturer> lecturer;
 	
+	@OneToMany(mappedBy="courses")
+	private List<CourseLecturer> Courselecturer;
+	
+	@OneToMany(mappedBy="course")
+	private List<Enrolment> enrolment;
 	
 	public Course() {
 		super();
 	}
-
-
+	
+	
+	
 
 	public Course(String courseId, String courseName, String description, String classSize, int credits, int duration,
-			List<Lecturer> lecturer) {
+			List<CourseLecturer> courselecturer, List<Enrolment> enrolment) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
@@ -38,8 +42,10 @@ public class Course
 		this.classSize = classSize;
 		this.credits = credits;
 		this.duration = duration;
-		this.lecturer = lecturer;
+		Courselecturer = courselecturer;
+		this.enrolment = enrolment;
 	}
+
 
 
 
@@ -49,9 +55,11 @@ public class Course
 
 
 
+
 	public void setCourseId(String courseId) {
 		this.courseId = courseId;
 	}
+
 
 
 
@@ -61,9 +69,11 @@ public class Course
 
 
 
+
 	public void setCourseName(String courseName) {
 		this.courseName = courseName;
 	}
+
 
 
 
@@ -73,9 +83,11 @@ public class Course
 
 
 
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 
 
@@ -85,9 +97,11 @@ public class Course
 
 
 
+
 	public void setClassSize(String classSize) {
 		this.classSize = classSize;
 	}
+
 
 
 
@@ -97,9 +111,11 @@ public class Course
 
 
 
+
 	public void setCredits(int credits) {
 		this.credits = credits;
 	}
+
 
 
 
@@ -109,33 +125,53 @@ public class Course
 
 
 
+
 	public void setDuration(int duration) {
 		this.duration = duration;
 	}
 
 
 
-	public List<Lecturer> getLecturer() {
-		return lecturer;
+
+	public List<CourseLecturer> getCourselecturer() {
+		return Courselecturer;
 	}
 
 
 
-	public void setLecturer(List<Lecturer> lecturer) {
-		this.lecturer = lecturer;
+
+	public void setCourselecturer(List<CourseLecturer> courselecturer) {
+		Courselecturer = courselecturer;
 	}
+
+
+
+
+	public List<Enrolment> getEnrolment() {
+		return enrolment;
+	}
+
+
+
+
+	public void setEnrolment(List<Enrolment> enrolment) {
+		this.enrolment = enrolment;
+	}
+
 
 
 
 	@Override
 	public String toString() {
 		return "Course [courseId=" + courseId + ", courseName=" + courseName + ", description=" + description
-				+ ", classSize=" + classSize + ", credits=" + credits + ", duration=" + duration + ", lecturer="
-				+ lecturer + "]";
+				+ ", classSize=" + classSize + ", credits=" + credits + ", duration=" + duration + ", Courselecturer="
+				+ Courselecturer + ", enrolment=" + enrolment + "]";
 	}
+
+
 	
 	
-	
+
 
 	
 
