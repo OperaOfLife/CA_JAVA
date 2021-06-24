@@ -1,10 +1,202 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>ABOUT US</title>
+<meta charset="UTF-8">
+
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
+    <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<title>NSIU</title>
 </head>
 <body>
-<h1>ABOUT US</h1>
+
+<header th:insert="fragments/general.html :: header"> </header> 
+
+      <nav id="nav2" class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="homenavbar2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="../../main/about" th:href="@{/main/about}">About Us</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link " aria-current="page" href="../../main/courses" th:href="@{/main/courses}">Courses</a>
+        </li>
+        
+                
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<!-- Content -->
+<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+
+  <div class="w3-panel">
+    <h1><b>NSIU</b></h1>
+  </div>
+
+  <!-- Sliding Banner -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img th:src="@{/images/library.jpg}" alt="caps1" style="width:100%">
+      <div class="w3-display-topleft w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">Nurturing leaders of the future</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img th:src="@{/images/fishing.jpg}" alt="caps1" style="width:100%">
+      <div class="w3-display-middle w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">Empowering creativity and invention</span>
+      </div>
+    </div>
+    <div class="w3-display-container mySlides">
+      <img th:src="@{/images/school.jpg}" alt="caps1" style="width:100%">
+      <div class="w3-display-topright w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom">Building a culture of respect and moral courage</span>
+      </div>
+    </div>
+
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-blue-grey w3-padding w3-xlarge">
+      <div class="w3-left" onclick="plusDivs(-1)"><i class="fa fa-arrow-circle-left w3-hover-text-black"></i></div>
+      <div class="w3-right" onclick="plusDivs(1)"><i class="fa fa-arrow-circle-right w3-hover-text-black"></i></div>
+    
+      <div class="w3-center">
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(1)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(2)"></span>
+        <span class="w3-tag demodots w3-border w3-transparent w3-hover-white" onclick="currentDiv(3)"></span>
+      </div>
+    </div>
+  </div>
+
+	<br /><br />
+
+  <!-- About Us -->
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-blue-grey w3-padding-16">About Us</span>
+
+	<br /><br />
+
+      <p>NSIU aspires to be the inspiration for invention and enterprise amongst our students. Here at NSIU, we believe in independence and innovation. Our sheer focus is on the spirit of quality education to shape the leaders of the future and create a positive impact on society. As the Chinese proverb goes: “If you give a man a fish, you feed him for a day – if you teach him how to fish, you feed him for a lifetime.” NSIU aims to equip students with relevant skills to enable them to thrive and excel as leaders of honour.</p>
+      
+      <p>NSIU is home to multiple world class institutes and research centres – the National Fishing and Boating Institute, Aquatic Life Sciences Engineering, Ocean Studies Institute and the Environment and Energy Research Centre.</p>
+      
+      <p>Consistently ranked amongst the world’s top 50 universities for the past 5 years, NSIU is notably one of the world’s leading universities. We uphold our teachings with honour and believe in synergy between students and educators for a fulfilling education journey with us. </p>
+    </div>
+  </div>
+  
+    <!-- Core Values -->
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-64">
+      <span class="w3-xlarge w3-bottombar w3-border-blue-grey w3-padding-16">Core Values</span>
+    </div>
+    <div class="w3-col l3 m6 w3-pale-blue w3-container w3-padding-16">
+      <h3>Excellence</h3>
+    </div>
+
+    <div class="w3-col l3 m6 w3-blue-grey w3-container w3-padding-16">
+      <h3>Integrity</h3>
+    </div>
+
+    <div class="w3-col l3 m6 w3-dark-grey w3-container w3-padding-16">
+      <h3>Respect</h3>
+    </div>
+
+    <div class="w3-col l3 m6 w3-black w3-container w3-padding-16">
+      <h3>Innovation</h3>
+    </div>
+  </div>
+
+	<br /><br />
+
+  <!-- Contact Us -->
+  <div class="w3-center w3-padding-64" id="contact">
+    <span class="w3-xlarge w3-bottombar w3-border-blue-grey w3-padding-16">Contact Us</span>
+  </div>
+
+  <form class="w3-container">
+    <div class="w3-section">
+      <label>Name</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Name" required>
+    </div>
+    <div class="w3-section">
+      <label>Email</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" type="text" name="Email" required>
+    </div>
+    <div class="w3-section">
+      <label>Subject</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Subject" required>
+    </div>
+    <div class="w3-section">
+      <label>Message</label>
+      <input class="w3-input w3-border w3-hover-border-black" style="width:100%;" name="Message" required>
+    </div>
+    <a class="w3-button w3-block w3-blue-grey" href="../../main/contact-us" th:href="@{/main/contact-us}">Submit</a>
+	</form>
+
+
+    
+	<br />
+	 <div th:replace="fragments/general.html :: footer"></div> 
+
+    <!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!--Popper JS-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	
+	<!--Latest compiled JavaScript-->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	
+	<script>
+	// Slideshow
+	var slideIndex = 1;
+	showDivs(slideIndex);
+	
+	function plusDivs(n) {
+	  showDivs(slideIndex += n);
+	}
+	
+	function currentDiv(n) {
+	  showDivs(slideIndex = n);
+	}
+	
+	function showDivs(n) {
+	  var i;
+	  var x = document.getElementsByClassName("mySlides");
+	  var dots = document.getElementsByClassName("demodots");
+	  if (n > x.length) {slideIndex = 1}    
+	  if (n < 1) {slideIndex = x.length} ;
+	  for (i = 0; i < x.length; i++) {
+	    x[i].style.display = "none";  
+	  }
+	  for (i = 0; i < dots.length; i++) {
+	    dots[i].className = dots[i].className.replace(" w3-white", "");
+	  }
+	  x[slideIndex-1].style.display = "block";  
+	  dots[slideIndex-1].className += " w3-white";
+	}
+	</script>
+	 
+	
+	</div>
 </body>
 </html>

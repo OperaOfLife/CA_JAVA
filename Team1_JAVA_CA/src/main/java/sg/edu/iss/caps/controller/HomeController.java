@@ -51,5 +51,10 @@ public class HomeController {
 		return "register";
 	}
 	
+	@GetMapping("/contact-us")
+	public String showContactUs(Model model)
+	{
+		return "contact-us";
+	}
 
 }
