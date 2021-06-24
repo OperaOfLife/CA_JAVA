@@ -14,7 +14,7 @@ public class User
 	private int id;
 	private String username;
 	private String password;
-	private String userType;
+	private RoleType role;
 	
 	
 	
@@ -24,21 +24,19 @@ public class User
 
 
 
-	public User(String username, String password, String userType) {
+	public User(String username, String password) {
 		super();
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
 	}
 
 
 
-	public User(int id, String username, String password, String userType) {
+	public User(String username, String password, RoleType role) {
 		super();
-		this.id = id;
 		this.username = username;
 		this.password = password;
-		this.userType = userType;
+		this.role = role;
 	}
 
 
@@ -79,24 +77,31 @@ public class User
 
 
 
-	public String getUserType() {
-		return userType;
+	public RoleType getRole() {
+		return role;
 	}
 
 
 
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setRole(RoleType role) {
+		this.role = role;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userType=" + userType + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
 	}
+
+
+
 	
+
+
 	
-	
+
+
+
 	
 }

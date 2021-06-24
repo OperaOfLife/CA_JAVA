@@ -13,6 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Student
 {
+	private static final Date NULL = null;
 	@Id
 	private String studentId;
 	private String firstName;
@@ -28,6 +29,31 @@ public class Student
 	
 	public Student() {
 		super();
+	}
+
+
+
+	public Student(String studentId, String firstName, String middleName, String lastName, String email) {
+		super();
+		this.studentId = studentId;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.email = email;
+		
+	}
+
+
+
+	public Student(String studentId, String firstName, String middleName, String lastName, Date admissionDate,
+			String email) {
+		super();
+		this.studentId = studentId;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.admissionDate = admissionDate;
+		this.email = email;
 	}
 
 
