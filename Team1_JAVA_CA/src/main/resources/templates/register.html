@@ -24,20 +24,17 @@
         <div class="row justify-content-center mx-5 align-items-center">
             <div class="px-xl-5 py-4">
                 <h2 class="text-capitalize">Register Yourself</h2>
-                <form method="post" id="form" action="/Register/InsertData">
-                    <table>
-						<tr>
-							<td>Enter Your Id</td>
-							<td><input type="text" id="id_no"  tabindex="1" > </td>
-						</tr>
+                <form action="" th:object="${newuser}" th:action="@{/login/authenticateRegister}" method="post" class="justify-content-center align-items-center" >
+     		   <table>
+						
 
 						<tr>
-							<td>Username</td>
-							<td><input type="text" id="uname"></td>
+							<td>Enter Username</td>
+							<td><fieldset><input type="text" th:field="*{username}" id="uname" placeholder="Your Email"></fieldset></td>
 						</tr>
 						<tr>
 							<td>Enter Password</td>
-							<td><input type="password" id="password"  tabindex="2" ></td>
+							<td><fieldset><input type="password" th:field="*{password}"  id="password"  tabindex="2" ></fieldset></td>
 						</tr>
 						<tr>
 							<td>Confirm Password</td>

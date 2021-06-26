@@ -24,11 +24,11 @@
 
 <div class="mycontainer">
 	<div class="row no-gutters">
-         <div class="container no-gutters col-lg-5">
+         <div class="container col-lg-5">
               <img th:src="@{/images/loginimage.jpg}">
          </div>
 		 <div class="container  col-lg-4 ">
-		 	<form action="" th:object="${user}" th:action="@{/authenticate}" method="post" class="justify-content-center align-items-center" >
+		 	<form action="" th:object="${user}" th:action="@{/login/authenticate}" method="post" class="justify-content-center align-items-center" >
      			<h4 class="text-capitalize ">Sign-in to your account</h4>
               <fieldset>
 			 <input type="text" th:field="*{username}"  class="form-control my-3 p-2" tabindex="1" placeholder="Email address">

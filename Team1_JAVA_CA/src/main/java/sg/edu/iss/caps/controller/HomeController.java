@@ -45,11 +45,7 @@ public class HomeController {
 		return "all-courses";
 	}
 	
-	@GetMapping("/register")
-	public String showRegister(Model model)
-	{
-		return "register";
-	}
+	
 	
 	@GetMapping("/contact-us")
 	public String showContactUs(Model model)

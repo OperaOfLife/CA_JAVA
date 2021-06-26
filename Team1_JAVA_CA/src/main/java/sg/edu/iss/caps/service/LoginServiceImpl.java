@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sg.edu.iss.caps.domain.RoleType;
 import sg.edu.iss.caps.domain.User;
 import sg.edu.iss.caps.repo.LoginRepository;
 
@@ -20,24 +21,8 @@ public class LoginServiceImpl implements LoginService
 		urepo.save(user);
 	}
 
-	@Override
-	public void updateUser(User user) 
-	{
-		urepo.save(user);
-	}
-
-	@Override
-	public List<User> listAllUser()
-	{
-		return urepo.findAll();
-	}
-
-	@Override
-	public void deleteUser(User user)
-	{
-		urepo.delete(user);
-	}
-
+	
+	
 	@Override
 	public boolean authenticate(User user)
 	{
@@ -52,5 +37,10 @@ public class LoginServiceImpl implements LoginService
 	public User findByName(String name) 
 	{
 		return urepo.findUserByUsername(name);
+	}
+	@Override
+	public RoleType findRoleByName(String name) 
+	{
+		return urepo.findRoleByUsername(name);
 	}
 }

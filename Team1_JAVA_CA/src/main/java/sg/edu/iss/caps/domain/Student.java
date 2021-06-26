@@ -13,7 +13,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 public class Student
 {
-	private static final Date NULL = null;
+	
 	@Id
 	private String studentId;
 	private String firstName;

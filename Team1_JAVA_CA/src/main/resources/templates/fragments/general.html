@@ -21,7 +21,7 @@
 <nav id="nav1" class="navbar navbar-default navbar-expand-lg  bg-light">
       <div class="container-fluid">
       
-          <img th:src="@{/images/logo.jpg}"/>
+          <img th:src="@{/images/logo1.jpg}"/>
     <div class="collapse navbar-collapse" id="homenavbar1">
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
       
@@ -38,14 +38,20 @@
          <li class="nav-item">
          <a class="nav-link active" aria-current="page" href="../../main/home" th:href="@{/main/home}">Home</a>
          </li>
-        <li class="nav-item">
-         <a class="nav-link active" aria-current="page" href="../../main/register" th:href="@{/main/register}">Register</a>
+        <li class="nav-item" th:if="${session.usession ==null}">
+         <a class="nav-link active" aria-current="page" href="../../login/register" th:href="@{/login/register}">Register</a>
          </li>
         
-       
-        <li class="nav-item">
+       <li th:if="${session.usession !=null}" class="nav-item">
+        <a class="nav-link" href="../../login/exit" th:href="@{/login/exit}">Logout</a>
+        </li>
+        <li th:if="${session.usession ==null}" class="nav-item">
         <a class="nav-link" href="../../login/home" th:href="@{/login/home}">Login</a>
         </li>
+        
+        <!-- <li class="nav-item">
+        <a class="nav-link" href="../../login/home" th:href="@{/login/home}">Login</a>
+        </li> -->
                 
       </ul>
       
