@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 public class CourseLecturer
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
 	private Course courses;

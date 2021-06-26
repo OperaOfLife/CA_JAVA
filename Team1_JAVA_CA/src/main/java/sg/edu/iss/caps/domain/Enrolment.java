@@ -20,6 +20,7 @@ public class Enrolment
 	private Date enrolmentDate;
 	private String grade;
 	private String status;
+	//Am i able to extract student/course tables? if so how?
 	@ManyToOne
 	private Student student;
 	@ManyToOne
