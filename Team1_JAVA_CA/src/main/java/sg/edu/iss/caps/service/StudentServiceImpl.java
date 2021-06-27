@@ -11,7 +11,8 @@ import sg.edu.iss.caps.repo.EnrolmentRepository;
 import sg.edu.iss.caps.repo.StudentRepository;
 
 @Service
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService
+{
 
 	@Autowired
 	StudentRepository srepo;
@@ -20,7 +21,7 @@ public class StudentServiceImpl implements StudentService{
 	EnrolmentRepository erepo;
 	
 	@Transactional
-	public ArrayList<Enrolment>listEnrolmentByCourseId(int id){
+	public ArrayList<Enrolment> listEnrolmentByCourseId(String id){
 		return erepo.findEnrolmentByCourseId(id);
 	}
 }

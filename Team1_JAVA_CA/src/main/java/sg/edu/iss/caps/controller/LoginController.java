@@ -53,7 +53,7 @@ public class LoginController
 		
 		if(! lservice.authenticate(user)) 
 		{
-			user.setRole(RoleType.STUDENT);
+			user.setRole(RoleType.LECTURER);
 			lservice.createUser(user);
 			return "home";
 		}

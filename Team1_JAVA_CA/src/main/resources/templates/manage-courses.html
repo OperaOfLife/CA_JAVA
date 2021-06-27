@@ -16,7 +16,7 @@
 
 
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
-<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin.css" th:href="@{/css/admin.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
 
 
 <title>Manage Courses</title>
@@ -51,11 +51,38 @@
 </nav>
 
 
-  </div>
+ 
     
    
-<h1>Manage Courses</h1>
+<table class="center" th:if="${not #lists.isEmpty(courses)}" >
+<tr>
+	<th>COURSE ID</th>
+	<th>COURSE NAME</th>
+	<th>DESCRIPTION</th>
+	<th>CLASS SIZE</th>
+	<th>CREDITS</th>
+	<th>DURATION</th>
+	<th>Edit Link</th>
+	<th>Delete Link</th>
+</tr>
+<tr th:each="course:${courses}">
+	<td th:text=${course.courseId}>COURSE ID</td>
+	<td th:text=${course.courseName}>COURSE NAME</td>
+	<td th:text=${course.description}>DESCRIPTION</td>
+	<td th:text=${course.classSize}>CLASS SIZE</td>
+	<td th:text=${course.credits}>CREDITS</td>
+	<td th:text=${course.duration}>DURATION</td>
+	<td><a href="EditCourse.html" th:href="@{/admincourse/edit/}+${course.courseId}" >Edit</a></td>
+	<td><a href="DeleteCourse.html" th:href="@{/admincourse/delete/}+${course.courseId}" >Delete</a></td>
+</tr>
+<tr>
+<td colspan="6" >
+</td>
+<td colspan="2" >
+<button><a href="add-courses.html" th:href="@{/admincourse/add/}">Add New Courses</a></button>
 
+</td>
+</table>
 
 
 <br />

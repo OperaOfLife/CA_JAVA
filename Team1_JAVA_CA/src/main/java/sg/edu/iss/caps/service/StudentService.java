@@ -6,5 +6,5 @@ import sg.edu.iss.caps.domain.Enrolment;
 
 public interface StudentService {
 
-	public ArrayList<Enrolment>listEnrolmentByCourseId(int id);
+	public ArrayList<Enrolment>listEnrolmentByCourseId(String courseId);
 }

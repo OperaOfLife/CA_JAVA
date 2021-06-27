@@ -19,8 +19,7 @@ public class Enrolment
 	@DateTimeFormat (pattern="dd-MM-yyyy")
 	private Date enrolmentDate;
 	private String grade;
-	private String status;
-	//Am i able to extract student/course tables? if so how?
+	private EnrolmentStatus status;
 	@ManyToOne
 	private Student student;
 	@ManyToOne
@@ -36,7 +35,7 @@ public class Enrolment
 
 
 
-	public Enrolment(Date enrolmentDate, String grade, String status, Student student, Course course) {
+	public Enrolment(Date enrolmentDate, String grade, EnrolmentStatus status, Student student, Course course) {
 		super();
 		this.enrolmentDate = enrolmentDate;
 		this.grade = grade;
@@ -48,7 +47,7 @@ public class Enrolment
 
 
 
-	public Enrolment(int enrolmentId, Date enrolmentDate, String grade, String status, Student student, Course course) {
+	public Enrolment(int enrolmentId, Date enrolmentDate, String grade, EnrolmentStatus status, Student student, Course course) {
 		super();
 		this.enrolmentId = enrolmentId;
 		this.enrolmentDate = enrolmentDate;
@@ -103,14 +102,14 @@ public class Enrolment
 
 
 
-	public String getStatus() {
+	public EnrolmentStatus getStatus() {
 		return status;
 	}
 
 
 
 
-	public void setStatus(String status) {
+	public void setStatus(EnrolmentStatus status) {
 		this.status = status;
 	}
 
@@ -145,12 +144,7 @@ public class Enrolment
 
 
 
-	@Override
-	public String toString() {
-		return "Enrolment [enrolmentId=" + enrolmentId + ", enrolmentDate=" + enrolmentDate + ", grade=" + grade
-				+ ", status=" + status + ", student=" + student + ", course=" + course + "]";
-	}
-
+	
 
 
 

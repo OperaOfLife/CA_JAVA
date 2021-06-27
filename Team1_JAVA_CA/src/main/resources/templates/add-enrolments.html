@@ -1,10 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/register.css" th:href="@{/css/register.css}" />
+
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
+
+
+    
+
+<title>Add Enrolments</title>
 </head>
 <body>
+
+
+<header th:insert="fragments/general.html :: header"> </header> 
+
+      <nav id="nav2" class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="homenavbar2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+       <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="../../adminstudent/list" th:href="@{/adminstudent/list}" >Manage Students</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link " aria-current="page" href="../../adminlecturer/list" th:href="@{/adminlecturer/list}">Manage Lecturers</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="../../admincourse/list" th:href="@{/admincourse/list}">Manage Courses</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link " aria-current="page" href="../../adminenrolment/list" th:href="@{/adminenrolment/list}">Manage Enrolments</a>
+        </li>
+        
+                
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+<div class="container">
+   <div class="row justify-content-center mx-5 align-items-center">
+      <div class="px-xl-5 py-4">
+          <h2 class="text-capitalize">Add New Enrollment</h2>
+	<form action="#" th:object="${addenrollment}" th:action="@{/adminenrolment/saveerm}"
+		method="post">
+		<table>
+		<tr>
+		<td></td>
+		<td>
+		<fieldset>
+			<input type="hidden" th:field="*{enrolmentId}">
+		</fieldset>
+		<tr>
+		<td>Course ID  : </td>
+		<td>
+		<fieldset>
+			 <input type="text" th:field="*{course.courseId}">
+			<p th:if="${#fields.hasErrors('course.courseId')}" th:errors="*{course.courseId}"></p>
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+		<td>Student Grade :</td>
+		<td>
+		<fieldset>
+			 <input type="text" th:field="*{grade}">
+			<p th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}"></p>
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+		<td>Enrollment Date  :</td>
+		<td>
+		<fieldset>
+			 <input type="text" th:field="*{enrolmentDate}"
+				placeholder="dd-MM-yyyy">
+			<p th:if="${#fields.hasErrors('enrolmentDate')}" th:errors="*{enrolmentDate}"></p>
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+		<td>Status :</td>
+		<td>
+			<fieldset>
+			 <input type="text" th:field="*{status}">
+			<p th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></p>
+		</fieldset>
+		</td>
+		</tr>
+		</table>
+
+		<div class="col-lg-12">
+                            <button type="submit" class="btn mt-3 mb-3" tabindex="7">ADD</button>
+                 </div>
+                 <div class="col-lg-12">
+                            <button type="reset" class="btn mt-3 mb-3" tabindex="8">RESET</button>
+                   </div>
+                    
+                    <div class="form-row my-auto justify-content-center align-items-center">
+                        <div class="col-lg-12 " id="error_msg">
+                            <!-- @ViewData["errmsg"] -->
+                       </div>
+                       </div>
+                       
+	</form>
+	</div>
+	</div>
+	</div>
+<br />
+	 <div th:replace="fragments/general.html :: footer"></div>
 
 </body>
 </html>

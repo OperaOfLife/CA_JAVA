@@ -16,7 +16,8 @@
 
 
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
-<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin.css" th:href="@{/css/admin.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
+
 
 
 <title>Manage Enrolments</title>
@@ -50,11 +51,33 @@
   </div>
 </nav>
 
+<h4>Update Enrollment</h4>
+	<!-- Hyperlink to addenrollment-->
+	<a href="add-enrolments.html" th:href="@{/adminenrolment/adderm}">Add Enrollment</a>
 
-  </div>
-    
-   
-<h1>Manage Enrolments</h1>
+	  <h2 th:if="${not #lists.isEmpty(enrollments)}">Enrollment List</h2>
+	<table class="center" th:if="${not #lists.isEmpty(enrollments)}">
+		<tr>
+			<th>Enrolment Id</th>
+			<th>Course Code</th>
+			<th>Student Grade</th>
+			<th>Enrollment Date</th>
+			<th>Status</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+		<tr th:each="Enrollment:${enrollments}">
+			<td th:text="${Enrollment.enrolmentId}">Id</td>
+			<td th:text="${Enrollment.course.courseId}">Course Id</td>
+			<td th:text="${Enrollment.grade}">Student Grade</td>
+			<td th:text="${#temporals.format(Enrollment.enrolmentDate, 'dd-MM-yyyy')}">Enrollment Date</td>
+			<td th:text="${Enrollment.status}">Status</td>
+			<td><a href="addenrollment.html"
+				th:href="@{/adminenrolment/editerm/}+${Enrollment.enrolmentId}">Edit</a></td>
+			<td><a href="deleteenrollment.html"
+				th:href="@{/adminenrolment/deleteerm/}+${Enrollment.enrolmentId}">Delete</a></td>
+		</tr>
+	</table>
 
 
 

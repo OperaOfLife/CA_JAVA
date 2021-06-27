@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.Enrolment;
-import sg.edu.iss.caps.service.CourseService;
+import sg.edu.iss.caps.service.LecturerService;
 import sg.edu.iss.caps.service.StudentService;
 
 @Controller
@@ -17,7 +17,7 @@ import sg.edu.iss.caps.service.StudentService;
 public class LecturerEnrolmentController 
 {
 	@Autowired
-	CourseService cservice;
+	LecturerService cservice;
 	
 	@Autowired
 	StudentService sservice;
@@ -32,7 +32,7 @@ public class LecturerEnrolmentController
 	
 	//Display Selected Course and its enrolment 
 	@RequestMapping("/coursedetail/{courseId}")
-	public String enrolmentDetails(@PathVariable("courseId") int courseId, Model model) {
+	public String enrolmentDetails(@PathVariable("courseId") String courseId, Model model) {
 		model.addAttribute("course", cservice.findCourseById(courseId));
 		model.addAttribute("enrolments", sservice.listEnrolmentByCourseId(courseId));
 		return "view-course-enrolment-details";
