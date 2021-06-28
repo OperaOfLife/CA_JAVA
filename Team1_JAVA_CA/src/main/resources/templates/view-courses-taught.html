@@ -46,27 +46,26 @@
   </div>
 </nav>
 
-
-  </div>
     
+<h1>View Courses Taught</h1>
 
-<table border="1" style="border-collapse:collapse">
+<table border="1" style="border-collapse:collapse" width="100%">
 		<tr>
-			<th>Course ID</th>
+			<th>Course Code</th>
 			<th>Course Name</th>
-			<th>Course Description</th>
-			<th>Course Size</th>
-			<th>Credits(AU)</th>
-			<th>Duration(Weeks)</th>
+			<th>Description</th>
+			<th>Class Size</th>
+			<th>Start Date</th>
+			<th>Duration(Days)</th>
 		</tr>
 		
-		<tr th:each="course:${courses}">
-			<td><span th:text="${course.courseId}">Default Course ID</span></td>
-			<td><span th:text="${course.courseName}">Default Course Name</span></td>
-			<td><span th:text="${course.description}">Default Course Description</span></td>
-			<td><span th:text="${course.classSize}">Default Course Size</span></td>
-			<td><span th:text="${course.credits}">Default Credits(AU)</span></td>
-			<td><span th:text="${course.duration}">Default Duration</span></td>			
+		<tr th:each="data:${ldata}">
+			<td><span th:text="${data.courses.courseId}">Course ID</span></td>
+			<td><span th:text="${data.courses.courseName}">Course Name</span></td>
+			<td><span th:text="${data.courses.description}">Course Description</span></td>
+			<td><span th:text="${data.courses.classSize}">Course Size</span></td>
+			<td><span th:text="${data.courses.courseStartDate}">Course Start Date</span></td>
+			<td><span th:text="${data.courses.duration}">Duration(Days)</span></td>			
 		</tr>
 		
 	</table>

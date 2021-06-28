@@ -24,4 +24,9 @@ public class StudentServiceImpl implements StudentService
 	public ArrayList<Enrolment> listEnrolmentByCourseId(String id){
 		return erepo.findEnrolmentByCourseId(id);
 	}
+	
+	@Transactional
+	public ArrayList<Enrolment> listCoursesEnrolledByStudentEmail (String email) {
+		return erepo.listCoursesEnrolledByStudentEmail(email);
+	}
 }

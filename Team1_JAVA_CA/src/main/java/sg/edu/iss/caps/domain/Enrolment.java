@@ -1,6 +1,7 @@
 package sg.edu.iss.caps.domain;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ public class Enrolment
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int enrolmentId;
 	@DateTimeFormat (pattern="dd-MM-yyyy")
-	private Date enrolmentDate;
+	private LocalDate enrolmentDate;
 	private String grade;
 	private EnrolmentStatus status;
 	@ManyToOne
@@ -35,7 +36,7 @@ public class Enrolment
 
 
 
-	public Enrolment(Date enrolmentDate, String grade, EnrolmentStatus status, Student student, Course course) {
+	public Enrolment(LocalDate enrolmentDate, String grade, EnrolmentStatus status, Student student, Course course) {
 		super();
 		this.enrolmentDate = enrolmentDate;
 		this.grade = grade;
@@ -47,12 +48,23 @@ public class Enrolment
 
 
 
-	public Enrolment(int enrolmentId, Date enrolmentDate, String grade, EnrolmentStatus status, Student student, Course course) {
+	public Enrolment(int enrolmentId, LocalDate enrolmentDate, String grade, EnrolmentStatus status, Student student, Course course) {
 		super();
 		this.enrolmentId = enrolmentId;
 		this.enrolmentDate = enrolmentDate;
 		this.grade = grade;
 		this.status = status;
+		this.student = student;
+		this.course = course;
+	}
+	
+	
+
+
+	public Enrolment(LocalDate enrolmentDate, String grade, Student student, Course course) {
+		super();
+		this.enrolmentDate = enrolmentDate;
+		this.grade = grade;
 		this.student = student;
 		this.course = course;
 	}
@@ -74,14 +86,14 @@ public class Enrolment
 
 
 
-	public Date getEnrolmentDate() {
+	public LocalDate getEnrolmentDate() {
 		return enrolmentDate;
 	}
 
 
 
 
-	public void setEnrolmentDate(Date enrolmentDate) {
+	public void setEnrolmentDate(LocalDate enrolmentDate) {
 		this.enrolmentDate = enrolmentDate;
 	}
 
@@ -145,7 +157,4 @@ public class Enrolment
 
 
 	
-
-
-
 }

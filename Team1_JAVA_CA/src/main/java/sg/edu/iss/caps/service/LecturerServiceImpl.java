@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.edu.iss.caps.domain.Course;
+import sg.edu.iss.caps.domain.CourseLecturer;
+import sg.edu.iss.caps.repo.CourseLecturerRepository;
 import sg.edu.iss.caps.repo.CourseRepository;
 
 @Service
@@ -15,6 +17,9 @@ public class LecturerServiceImpl implements LecturerService
 
 	@Autowired
 	CourseRepository crepo;
+	
+	@Autowired
+	CourseLecturerRepository clrepo;
 	
 	//Select all courses in course table 
 	@Transactional
@@ -44,5 +49,11 @@ public class LecturerServiceImpl implements LecturerService
 	public Object findCourseNamesByLecturerId(int lecturerId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//Select courses taught by a particular lecturer using lectureremail
+	@Transactional
+	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail) {
+		return clrepo.listCourseNamesByLecturerEmail(lectureremail);
 	}
 }

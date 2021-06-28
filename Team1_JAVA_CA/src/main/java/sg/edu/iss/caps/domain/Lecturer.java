@@ -1,5 +1,6 @@
 package sg.edu.iss.caps.domain;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Lecturer
 	private String middleName;
 	private String lastName;
 	@DateTimeFormat (pattern="dd-MM-yyyy")
-	private String dateOfJoining;
+	private LocalDate dateOfJoining;
 	private String email;
 	
 	@OneToMany(mappedBy="lecturer")
@@ -40,7 +41,7 @@ public class Lecturer
 
 
 
-	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, String dateOfJoining,
+	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, LocalDate dateOfJoining,
 			String email, List<CourseLecturer> courselecturer) {
 		super();
 		this.lecturerId = lecturerId;
@@ -50,6 +51,21 @@ public class Lecturer
 		this.dateOfJoining = dateOfJoining;
 		this.email = email;
 		this.courselecturer = courselecturer;
+	}
+
+
+
+
+
+	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, LocalDate dateOfJoining,
+			String email) {
+		super();
+		this.lecturerId = lecturerId;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.dateOfJoining = dateOfJoining;
+		this.email = email;
 	}
 
 
@@ -120,7 +136,13 @@ public class Lecturer
 
 
 
-	public String getDateOfJoining() {
+
+
+
+
+
+
+	public LocalDate getDateOfJoining() {
 		return dateOfJoining;
 	}
 
@@ -128,7 +150,7 @@ public class Lecturer
 
 
 
-	public void setDateOfJoining(String dateOfJoining) {
+	public void setDateOfJoining(LocalDate dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
 
@@ -177,7 +199,5 @@ public class Lecturer
 
 
 
-
-	
 
 }

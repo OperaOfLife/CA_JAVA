@@ -1,6 +1,6 @@
 package sg.edu.iss.caps.domain;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,7 +20,7 @@ public class Student
 	private String middleName;
 	private String lastName;
 	@DateTimeFormat (pattern="dd-MM-yyyy")
-	private Date admissionDate;
+	private LocalDate admissionDate;
 	private String email;
 	@OneToMany(mappedBy="student")
 	private List<Enrolment> enrolment;
@@ -45,7 +45,7 @@ public class Student
 
 
 
-	public Student(String studentId, String firstName, String middleName, String lastName, Date admissionDate,
+	public Student(String studentId, String firstName, String middleName, String lastName, LocalDate admissionDate,
 			String email) {
 		super();
 		this.studentId = studentId;
@@ -58,7 +58,7 @@ public class Student
 
 
 
-	public Student(String studentId, String firstName, String middleName, String lastName, Date admissionDate,
+	public Student(String studentId, String firstName, String middleName, String lastName, LocalDate admissionDate,
 			String email, List<Enrolment> enrolment) {
 		super();
 		this.studentId = studentId;
@@ -120,13 +120,13 @@ public class Student
 
 
 
-	public Date getAdmissionDate() {
+	public LocalDate getAdmissionDate() {
 		return admissionDate;
 	}
 
 
 
-	public void setAdmissionDate(Date admissionDate) {
+	public void setAdmissionDate(LocalDate admissionDate) {
 		this.admissionDate = admissionDate;
 	}
 
