@@ -15,7 +15,6 @@
 
 	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
 
-<script  type="text/javascript" src="../../JavaScript/add-course.js" th:href="@{/JavaScript/add-course.js}"></script>
 
     
 
@@ -57,20 +56,20 @@
       <div class="px-xl-5 py-4">
           <h2 class="text-capitalize">Add New Courses</h2>
 
- 			<form id="form" action="" th:object="${course}" th:action="@{/admincourse/save}" method="get">
+ 			<form action="" th:object="${course}" th:action="@{/admincourse/save}" method="get">
  			 <table>
 				<tr>
 				<td>Course Id : </td>
 				<td>
 				<fieldset>
-						<input type="text" th:field="*{courseId}" id="id_no" tabindex="1">
+						<input type="text" th:field="*{courseId}" tabindex="1">
 				</fieldset>
 				</td>
 				</tr>
 				<tr><td>Course Name : </td>
 				<td>
 				<fieldset>
-				<input type="text" id="name" th:field="*{courseName}" tabindex="2">
+				<input type="text" th:field="*{courseName}" tabindex="2">
 				<p th:if="${#fields.hasErrors('courseName')}" th:errors="*{courseName}"></p>
 				</fieldset>
 				</td>
@@ -79,7 +78,7 @@
 				<td> Description : </td>
 				<td>
 				<fieldset>
-					<input type="text" id="desc" th:field="*{description}" tabindex="3">
+					<input type="text" th:field="*{description}" tabindex="3">
 				</fieldset>
 				</td>
 				</tr>
@@ -87,14 +86,14 @@
 				<td>Class Size : </td>
 				<td>
 				<fieldset>
-					<input type="text" id="size" th:field="*{classSize}" tabindex="4">
+					<input type="text" th:field="*{classSize}" tabindex="4">
 				</fieldset>
 				</td>
 				</tr>
 				<tr><td>Credits : </td>
 				<td>
 				<fieldset>
-						<input type="text" id="credits" th:field="*{credits}" tabindex="5">
+						<input type="text" th:field="*{credits}" tabindex="5">
 				</fieldset>
 				</td>
 				</tr>
@@ -102,7 +101,7 @@
 				<td>Duration : </td>
 				<td>
 				<fieldset>
-						<input type="text" id="duration" th:field="*{duration}" tabindex="6">
+						<input type="text" th:field="*{duration}" tabindex="6">
 				</fieldset>
 				</td>
 				</tr>

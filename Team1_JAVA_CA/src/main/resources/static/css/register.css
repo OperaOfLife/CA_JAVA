@@ -64,8 +64,6 @@ h2{
 
 #error_msg {
     color: red;
-    font-weight: bolder;
-    font-size:30px;
     padding: 3px;
     text-align: center;
     font-family: 'Times New Roman, Times, serif';
