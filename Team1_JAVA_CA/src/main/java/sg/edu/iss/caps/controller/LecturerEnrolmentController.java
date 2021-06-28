@@ -49,7 +49,7 @@ public class LecturerEnrolmentController
 		model.addAttribute("courses",lservice.findCourseNamesByLecturerId(lecturerId));
 		
 		//Learn AJAX
-		//Use selected Course from dropdown to display enrolment from CourseId
+		//View selected Course from dropdown to display enrolment from CourseId
 		
 		//Simulate Retrieved Course name , Check how to return from HTML
 		int courseId = 1001;
