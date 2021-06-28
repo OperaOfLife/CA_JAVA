@@ -12,6 +12,6 @@ import sg.edu.iss.caps.domain.Student;
 public interface EnrolmentRepository extends JpaRepository<Enrolment, Integer> {
 
 	@Query("SELECT e FROM Enrolment e, Course c WHERE c.courseId LIKE :id")
-	public ArrayList<Enrolment>findEnrolmentByCourseId(@Param("id") int id);
+	public ArrayList<Enrolment>findEnrolmentByCourseId(@Param("id") String id);
 	
 }

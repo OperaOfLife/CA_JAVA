@@ -30,7 +30,7 @@ public class LecturerServiceImpl implements LecturerService {
 	EnrolmentRepository erepo;
 	
 	@Transactional
-	public int findLecturerIdbyEmail(String email) {
+	public String findLecturerIdbyEmail(String email) {
 		return lrepo.findLecturerIdbyEmail(email);
 	}
 	
@@ -40,17 +40,17 @@ public class LecturerServiceImpl implements LecturerService {
 	}
 	
 	@Transactional
-	public Course findCourseById(int id) {
+	public Course findCourseById(String id) {
 		return crepo.findById(id).get();
 	}
 	
 	@Transactional 
-	public ArrayList<Course> findCoursesByLecturerId(int id) {
+	public ArrayList<Course> findCoursesByLecturerId(String id) {
 		return clrepo.listCoursesByLecturerId(id);
 	}
 	
 	@Transactional
-	public ArrayList<Enrolment>listEnrolmentByCourseId(int id){
+	public ArrayList<Enrolment>listEnrolmentByCourseId(String id){
 		return erepo.findEnrolmentByCourseId(id);
 	}
 	

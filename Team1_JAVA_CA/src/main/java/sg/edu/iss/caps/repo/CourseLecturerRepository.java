@@ -14,5 +14,5 @@ public interface CourseLecturerRepository extends JpaRepository<CourseLecturer, 
 	//Find Course Name by Linking up Course Ids and searching LecturerId
 	
 	@Query("SELECT c FROM CourseLecturer cl INNER JOIN cl.courses c INNER JOIN cl.lecturer l WHERE l.lecturerId LIKE :lecturerid")
-	public ArrayList<Course> listCoursesByLecturerId (@Param("lecturerid") int id);
+	public ArrayList<Course> listCoursesByLecturerId (@Param("lecturerid") String id);
 }

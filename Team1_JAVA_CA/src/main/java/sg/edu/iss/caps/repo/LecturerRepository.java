@@ -11,5 +11,5 @@ public interface LecturerRepository extends JpaRepository<Lecturer, Integer>
 
 	//Find lectuerId from user email
 	@Query("SELECT l.lecturerId FROM Lecturer l WHERE l.email LIKE :email")
-	public int findLecturerIdbyEmail(@Param("email") String email); 
+	public String findLecturerIdbyEmail(@Param("email") String email); 
 }
