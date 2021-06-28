@@ -45,12 +45,22 @@ public class LecturerServiceImpl implements LecturerService {
 	}
 	
 	@Transactional 
-	public ArrayList<Course> findCourseNamesByLecturerId(int id) {
-		return clrepo.listCourseNamesByLecturerId(id);
+	public ArrayList<Course> findCoursesByLecturerId(int id) {
+		return clrepo.listCoursesByLecturerId(id);
 	}
 	
 	@Transactional
 	public ArrayList<Enrolment>listEnrolmentByCourseId(int id){
 		return erepo.findEnrolmentByCourseId(id);
+	}
+	
+	@Transactional
+	public Enrolment listEnrolmentByEnrolmentId(int id){
+		return erepo.findById(id).get();
+	}
+	
+	@Transactional
+	public void saveUpdatedGrades(Enrolment enrolment) {
+		erepo.save(enrolment);
 	}
 }
