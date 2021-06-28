@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/register.css" th:href="@{/css/register.css}" />
  <link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
+<script  type="text/javascript" src="../../JavaScript/register.js" th:href="@{/JavaScript/register.js}"></script>
 
 
 <title>Register</title>
@@ -24,17 +25,17 @@
         <div class="row justify-content-center mx-5 align-items-center">
             <div class="px-xl-5 py-4">
                 <h2 class="text-capitalize">Register Yourself</h2>
-                <form action="" th:object="${newuser}" th:action="@{/login/authenticateRegister}" method="post" class="justify-content-center align-items-center" >
+                <form id="form" action="" th:object="${newuser}" th:action="@{/login/authenticateRegister}" method="post" class="justify-content-center align-items-center" >
      		   <table>
 						
 
 						<tr>
 							<td>Enter Username</td>
-							<td><fieldset><input type="text" th:field="*{username}" id="uname" placeholder="Your Email"></fieldset></td>
+							<td><fieldset><input type="email" th:field="*{username}" id="uname" placeholder="Your Email"></fieldset></td>
 						</tr>
 						<tr>
 							<td>Enter Password</td>
-							<td><fieldset><input type="password" th:field="*{password}"  id="password"  tabindex="2" ></fieldset></td>
+							<td><fieldset><input type="password" th:field="*{password}"  id="pwd"  tabindex="2" ></fieldset></td>
 						</tr>
 						<tr>
 							<td>Confirm Password</td>
