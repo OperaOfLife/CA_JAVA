@@ -17,7 +17,7 @@ import sg.edu.iss.caps.service.StudentService;
 public class LecturerEnrolmentController 
 {
 	@Autowired
-	LecturerService cservice;
+	LecturerService lservice;
 	
 	@Autowired
 	StudentService sservice;
@@ -41,6 +41,21 @@ public class LecturerEnrolmentController
 	@RequestMapping("/gradecourse")
 	public String gradeCourse(@ModelAttribute("enrolment") Enrolment enrolment,Model model)
 	{
+<<<<<<< HEAD
+=======
+		//First find lecturerId from lecturer email 
+		int lecturerId = lservice.findLecturerIdbyEmail("XXX@gmail.com");
+		//Find courses associated with lecturerId
+		model.addAttribute("courses",lservice.findCourseNamesByLecturerId(lecturerId));
+		
+		//Learn AJAX
+		//View selected Course from dropdown to display enrolment from CourseId
+		
+		//Simulate Retrieved Course name , Check how to return from HTML
+		int courseId = 1001;
+		//List Student enrolments via course Id
+		model.addAttribute("enrolments", lservice.listEnrolmentByCourseId(courseId));
+>>>>>>> refs/remotes/origin/Genesis
 		return "grade-course";
 	}
 	
