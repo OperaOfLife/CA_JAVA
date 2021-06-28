@@ -51,34 +51,59 @@
 <div class="container">
         <div class="row justify-content-center mx-5 align-items-center">
             <div class="px-xl-5 py-4">
-                <h2 class="text-capitalize">Add New Lecturer</h2>
-                <form id="form" >
-                    <table>
-						<tr>
-							<td>Lecturer Id : </td>
-							<td><input type="text" id="id_no"  tabindex="1" > </td>
-						</tr>
+                <h2 class="text-capitalize">Manage Lecturer</h2>
+                  <form id="form" action="" th:object="${lecturer}" th:action="@{/adminlecturer/save}" method="get">
+                <table>
+            <tr>
+            <td>Lecturer Id : </td>
+            <td>
+            <fieldset>
+            <input type="text" th:field="*{lecturerId}" id="id_no" tabindex="1">
+            </fieldset>
+            </td>
+            </tr>
 
-						<tr>
-							<td>First Name : </td>
-							<td><input type="text" id="fname"></td>
-						</tr>
-						<tr>
-							<td>Middle Name : </td>
-							<td><input type="text" id="mname"></td>
-						</tr>
-						<tr>
-							<td>Last Name : </td>
-							<td><input type="text" id="lname"></td>
-						</tr>
-						<tr>
-							<td>Joining Date :</td>
-							<td><input type="text" id="date"></td>
-						</tr>
-						<tr>
-							<td>Email : </td>
-							<td><input type="email" id="email"></td>
-						</tr>
+            <tr>
+              <td>First Name : </td>
+              <td>
+              <fieldset>
+              <input type="text" th:field="*{firstName}" id="fname" tabindex="2">
+              </fieldset>
+              </td>
+            </tr>
+            <tr>
+              <td>Middle Name : </td>
+              <td>
+              <fieldset>
+            <input type="text" th:field="*{middleName}" id="mname" tabindex="3">
+            </fieldset>
+            </td>
+            </tr>
+            <tr>
+              <td>Last Name : </td>
+              <td>
+              <fieldset>
+            <input type="text" th:field="*{lastName}" id="lname" tabindex="4">
+            </fieldset>
+            </td>
+            </tr>
+            <tr>
+              <td>Joining Date :</td>
+              <td>
+              <fieldset>
+            <input type="text" th:field="*{dateOfJoining}" id="date" tabindex="5">
+            </fieldset>
+            </td>
+            </tr>
+            <tr>
+              <td>Email : </td>
+              <td>
+              <fieldset>
+            <input type="email" th:field="*{email}" id="email" tabindex="6">
+            </fieldset>
+            </td>
+            </tr>
+            
 						
 					</table>
                         

@@ -39,7 +39,7 @@ public class AdminCourseController
 	public String saveCourseForm(@ModelAttribute("course") Course course, BindingResult bindingResult, Model model) {
 		if (bindingResult.hasErrors())
 		{
-			return "courseform";
+			return "add-courses";
 		}
 		crepo.save(course);
 		return "forward:/admincourse/list";

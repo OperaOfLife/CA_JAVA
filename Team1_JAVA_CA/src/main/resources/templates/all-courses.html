@@ -1,10 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+
+ <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
+
+
+    <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
+
+
+<title>All Courses</title>
 </head>
 <body>
-<h1>List of all courses</h1>
+ <header th:insert="fragments/general.html :: header"> </header> 
+<nav id="nav2" class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="homenavbar2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+        <a class="nav-link " aria-current="page" href="../../main/about" th:href="@{/main/about}">About Us</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active " aria-current="page" href="../../main/courses" th:href="@{/main/courses}">Courses</a>
+        </li>
+        
+                
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+ 
+    
+   
+<table class="center" th:if="${not #lists.isEmpty(courses)}" >
+<tr>
+	<th>COURSE ID</th>
+	<th>COURSE NAME</th>
+	<th>DESCRIPTION</th>
+	<th>CLASS SIZE</th>
+	<th>CREDITS</th>
+	<th>DURATION</th>
+	
+</tr>
+<tr th:each="course:${courses}">
+	<td th:text=${course.courseId}>COURSE ID</td>
+	<td th:text=${course.courseName}>COURSE NAME</td>
+	<td th:text=${course.description}>DESCRIPTION</td>
+	<td th:text=${course.classSize}>CLASS SIZE</td>
+	<td th:text=${course.credits}>CREDITS</td>
+	<td th:text=${course.duration}>DURATION</td>
+	</tr>
+
+</table>
+
+
+<br />
+	 <div th:replace="fragments/general.html :: footer"></div> 
+
+
 </body>
 </html>

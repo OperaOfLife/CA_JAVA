@@ -51,42 +51,42 @@
 </nav>
 
 
-  </div>
-    
- <button><a href="../../adminlecturer/create" th:href="@{/adminlecturer/create}">Add New Lecturer</a></button>
+ 
 
-    <table class="center" >
+   <table class="center" >
       <tr>
-        <th>Lecturer_ID</th>
-      <th>Lecturer_First_Name</th>
-      <th>Lecturer_Last_Name</th>
-        <th>Lecturer_Email</th>
-        <th>Join_Date</th>
-        <th>Select</th>
+        <th>ID</th>
+        <th>First_Name</th>
+        <th>Middle_Name</th>
+        <th>Last_Name</th>
+        <th>Admission Date</th>
+        <th>Email</th>
+        <th>Edit Link</th>
+        <th>Delete Link</th>
       </tr>
-      <tr>
-        <td>222001</td>
-        <td>Jean</td>
-        <td>Wong</td>
-	<td>johnmiller@hotmail.com</td>
-        <td>19/2/2019</td>
-        <td><input type="radio" name="select" /></td>
+
+
+      <tr th:each="lecturer:${lecturers}">
+        <td th:text=${lecturer.lecturerId}>lecturerId</td>
+        <td th:text=${lecturer.firstName}>firstName</td>
+        <td th:text=${lecturer.middleName}>middleName</td>
+        <td th:text=${lecturer.lastName}>lastName</td>
+        <td th:text=${lecturer.dateOfJoining}>dateOfJoining</td>
+        <td th:text=${lecturer.email}>email</td>
+    <td><a href="EditLecturer.html" th:href="@{/adminlecturer/edit/}+${lecturer.lecturerId}" >Edit</a></td>
+  <td><a href="DeleteLecturer.html" th:href="@{/adminlecturer/delete/}+${lecturer.lecturerId}" >Delete</a></td>
+        
       </tr>
-            <tr>
-        <td>222002</td>
-        <td>Emiley</td>
-        <td>Ming</td>
-        <td>willeytan@hotmail.com</td>
-        <td>30/9/2020</td>
-	<td><input type="radio" name="select" /></td>
-      </tr>
+ <tr>
+<td colspan="6" >
+</td>
+<td colspan="2" >
+<button><a href="../../adminlecturer/add" th:href="@{/adminlecturer/add}">Add New Lecturer</a></button>
+
+</td>
+</tr>
+    
     </table>
-    <a>
-    <button>Edit</button>
-    </a>
-    <a>
-    <button>Delete</button>
-    </a>
 
 <br />
 	 <div th:replace="fragments/general.html :: footer"></div> 

@@ -56,40 +56,41 @@
    
 
 
-<button><a href="../../adminstudent/create" th:href="@{/adminstudent/create}">Add New Student</a></button>
+
 
     <table class="center" >
       <tr>
-        <th>Student_ID</th>
-      	<th>Student_First_Name</th>
-      	<th>Student_Last_Name</th>
+        <th>ID</th>
+        <th>First_Name</th>
+        <th>Middle_Name</th>
+        <th>Last_Name</th>
         <th>Admission Date</th>
-        <th>Student_Email</th>
-        <th>Select</th>
+        <th>Email</th>
+        <th>Edit Link</th>
+        <th>Delete Link</th>
+      </tr>
+
+
+      <tr th:each="student:${students}">
+        <td th:text=${student.studentId}>studentId</td>
+        <td th:text=${student.firstName}>firstName</td>
+        <td th:text=${student.middleName}>middleName</td>
+        <td th:text=${student.lastName}>lastName</td>
+        <td th:text=${student.admissionDate}>admissionDate</td>
+        <td th:text=${student.email}>email</td>
+		<td><a href="EditStudent.html" th:href="@{/adminstudent/edit/}+${student.studentId}" >Edit</a></td>
+	<td><a href="DeleteStudent.html" th:href="@{/adminstudent/delete/}+${student.studentId}" >Delete</a></td>
+        
       </tr>
       <tr>
-        <td>000001</td>
-        <td>John</td>
-        <td>Miller</td>
-        <td>1/6/2020</td>
-        <td>johnmiller@hotmail.com</td>
-        <td><input type="radio" name="select" /></td>
-      </tr>
-            <tr>
-        <td>000002</td>
-        <td>Willey</td>
-        <td>Tan</td>
-        <td>2/6/2020</td>
-        <td>willeytan@hotmail.com</td>
-        <td><input type="radio" name="select" /></td>
-      </tr>
+<td colspan="6" >
+</td>
+<td colspan="2" >
+<button><a href="../../adminstudent/add" th:href="@{/adminstudent/add}">Add New Student</a></button>
+
+</td>
+</tr>
     </table>
-    <a>
-    <button>Edit</button>
-    </a>
-    <a>
-    <button>Delete</button>
-    </a>
 
 <br />
 	 <div th:replace="fragments/general.html :: footer"></div> 

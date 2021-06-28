@@ -13,4 +13,6 @@ public interface LecturerService
 	public Object listEnrolmentByCourseId(int courseId);
 	public int findLecturerIdbyEmail(String string);
 	public Object findCourseNamesByLecturerId(int lecturerId);
+	
+	
 }

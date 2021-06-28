@@ -1,5 +1,6 @@
 package sg.edu.iss.caps.domain;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Lecturer
 	private String middleName;
 	private String lastName;
 	@DateTimeFormat (pattern="dd-MM-yyyy")
-	private String dateOfJoining;
+	private Date dateOfJoining;
 	private String email;
 	
 	@OneToMany(mappedBy="lecturer")
@@ -40,7 +41,7 @@ public class Lecturer
 
 
 
-	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, String dateOfJoining,
+	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, Date dateOfJoining,
 			String email, List<CourseLecturer> courselecturer) {
 		super();
 		this.lecturerId = lecturerId;
@@ -120,7 +121,7 @@ public class Lecturer
 
 
 
-	public String getDateOfJoining() {
+	public Date getDateOfJoining() {
 		return dateOfJoining;
 	}
 
@@ -128,7 +129,7 @@ public class Lecturer
 
 
 
-	public void setDateOfJoining(String dateOfJoining) {
+	public void setDateOfJoining(Date dateOfJoining) {
 		this.dateOfJoining = dateOfJoining;
 	}
 
@@ -168,14 +169,7 @@ public class Lecturer
 
 
 
-	@Override
-	public String toString() {
-		return "Lecturer [lecturerId=" + lecturerId + ", firstName=" + firstName + ", middleName=" + middleName
-				+ ", lastName=" + lastName + ", dateOfJoining=" + dateOfJoining + ", email=" + email
-				+ ", courselecturer=" + courselecturer + "]";
-	}
-
-
+	
 
 
 	

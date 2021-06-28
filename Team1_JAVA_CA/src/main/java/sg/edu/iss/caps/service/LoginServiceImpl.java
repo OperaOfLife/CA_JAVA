@@ -3,17 +3,30 @@ package sg.edu.iss.caps.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.support.SecurityContextProvider;
 import org.springframework.stereotype.Service;
 
+import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.domain.RoleType;
+import sg.edu.iss.caps.domain.Student;
 import sg.edu.iss.caps.domain.User;
+import sg.edu.iss.caps.repo.LecturerRepository;
 import sg.edu.iss.caps.repo.LoginRepository;
+import sg.edu.iss.caps.repo.StudentRepository;
 
 @Service
 public class LoginServiceImpl implements LoginService
 {
 	@Autowired
 	LoginRepository urepo;
+	
+	@Autowired
+	LecturerRepository lrepo;
+	
+	@Autowired
+	StudentRepository srepo;
+	
+	
 
 	@Override
 	public void createUser(User user) 
@@ -43,4 +56,25 @@ public class LoginServiceImpl implements LoginService
 	{
 		return urepo.findRoleByUsername(name);
 	}
+
+
+
+	@Override
+	public Lecturer lecturerByEmail(String email) 
+	{
+		
+		return lrepo.findLecturerByEmail(email);
+	}
+
+
+
+	@Override
+	public Student studentByEmail(String email) {
+		
+		return srepo.findStudentIdByEmail(email);
+	}
+
+
+
+	
 }

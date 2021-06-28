@@ -9,9 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.domain.RoleType;
+import sg.edu.iss.caps.domain.Student;
 import sg.edu.iss.caps.domain.User;
+import sg.edu.iss.caps.service.LecturerService;
 import sg.edu.iss.caps.service.LoginService;
+import sg.edu.iss.caps.service.StudentService;
 
 @Controller
 @RequestMapping("/login")
@@ -53,7 +57,14 @@ public class LoginController
 		
 		if(! lservice.authenticate(user)) 
 		{
-			user.setRole(RoleType.LECTURER);
+			Student s=lservice.studentByEmail(user.getUsername());
+			Lecturer l=lservice.lecturerByEmail(user.getUsername());
+			if(s!=null)
+			   user.setRole(RoleType.STUDENT);
+			else if(l!=null)
+					user.setRole(RoleType.LECTURER);
+			else
+				return "error";
 			lservice.createUser(user);
 			return "home";
 		}

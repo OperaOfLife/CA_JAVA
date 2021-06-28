@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.Enrolment;
+import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.service.LecturerService;
 import sg.edu.iss.caps.service.StudentService;
 

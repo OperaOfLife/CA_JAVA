@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.edu.iss.caps.domain.Course;
+import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.repo.CourseRepository;
 
 @Service
