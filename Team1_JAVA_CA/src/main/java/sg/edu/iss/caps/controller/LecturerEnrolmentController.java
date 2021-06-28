@@ -26,14 +26,14 @@ public class LecturerEnrolmentController
 	@RequestMapping("/home")
 	public String showEnrolment(@ModelAttribute("courses") Course courses,Model model)
 	{
-		model.addAttribute("allcourses", cservice.listAllcourses());
+		model.addAttribute("allcourses", lservice.listAllcourses());
 		return "view-course-enrolment";
 	}
 	
 	//Display Selected Course and its enrolment 
 	@RequestMapping("/coursedetail/{courseId}")
 	public String enrolmentDetails(@PathVariable("courseId") String courseId, Model model) {
-		model.addAttribute("course", cservice.findCourseById(courseId));
+		model.addAttribute("course", lservice.findCourseById(courseId));
 		model.addAttribute("enrolments", sservice.listEnrolmentByCourseId(courseId));
 		return "view-course-enrolment-details";
 	}
@@ -41,8 +41,7 @@ public class LecturerEnrolmentController
 	@RequestMapping("/gradecourse")
 	public String gradeCourse(@ModelAttribute("enrolment") Enrolment enrolment,Model model)
 	{
-<<<<<<< HEAD
-=======
+
 		//First find lecturerId from lecturer email 
 		int lecturerId = lservice.findLecturerIdbyEmail("XXX@gmail.com");
 		//Find courses associated with lecturerId
@@ -55,7 +54,7 @@ public class LecturerEnrolmentController
 		int courseId = 1001;
 		//List Student enrolments via course Id
 		model.addAttribute("enrolments", lservice.listEnrolmentByCourseId(courseId));
->>>>>>> refs/remotes/origin/Genesis
+
 		return "grade-course";
 	}
 	

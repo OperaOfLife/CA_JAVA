@@ -3,6 +3,7 @@ window.onload = function () {
     let error_elem = document.getElementById("error_msg");
     
     let form = document.getElementById("form");
+alert("hi");
 
    // form.document.getElementById("uname").focus;
 

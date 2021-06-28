@@ -27,4 +27,22 @@ public class LecturerServiceImpl implements LecturerService
 	public Course findCourseById(String id) {
 		return crepo.findById(id).get();
 	}
+
+	@Override
+	public Object listEnrolmentByCourseId(int courseId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int findLecturerIdbyEmail(String string) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Object findCourseNamesByLecturerId(int lecturerId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

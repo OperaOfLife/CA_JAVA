@@ -2,9 +2,9 @@ window.onload = function () {
 
     let error_elem = document.getElementById("error_msg");
 
-    
+    alert("hi");
     let form = document.getElementById("form");
-
+		
 
     form.onsubmit = function () 
 		{

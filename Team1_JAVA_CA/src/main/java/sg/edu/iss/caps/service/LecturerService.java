@@ -10,4 +10,7 @@ public interface LecturerService
 
 	public ArrayList<Course> listAllcourses();
 	public Course findCourseById(String courseId);
+	public Object listEnrolmentByCourseId(int courseId);
+	public int findLecturerIdbyEmail(String string);
+	public Object findCourseNamesByLecturerId(int lecturerId);
 }
