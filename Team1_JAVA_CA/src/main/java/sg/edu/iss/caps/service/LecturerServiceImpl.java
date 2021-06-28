@@ -7,26 +7,65 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.edu.iss.caps.domain.Course;
-import sg.edu.iss.caps.domain.Lecturer;
+
+import sg.edu.iss.caps.domain.Enrolment;
+import sg.edu.iss.caps.repo.CourseLecturerRepository;
 import sg.edu.iss.caps.repo.CourseRepository;
+import sg.edu.iss.caps.repo.EnrolmentRepository;
+import sg.edu.iss.caps.repo.LecturerRepository;
 
 @Service
-public class LecturerServiceImpl implements LecturerService 
-{
+public class LecturerServiceImpl implements LecturerService {
 
+	
+	@Autowired
+	LecturerRepository lrepo;
+	
 	@Autowired
 	CourseRepository crepo;
 	
-	//Select all courses in course table 
+	@Autowired 
+	CourseLecturerRepository clrepo;	
+	
+	@Autowired
+	EnrolmentRepository erepo;
+	
+	@Transactional
+	public String findLecturerbyEmail(String email) {
+		return lrepo.findLecturerIdbyEmail(email);
+	}
+	
 	@Transactional
 	public ArrayList<Course> listAllcourses(){
 		return (ArrayList<Course>)crepo.findAll();
 	}
 	
-	//Select course name by course Id 
 	@Transactional
 	public Course findCourseById(String id) {
 		return crepo.findById(id).get();
+	}
+
+	
+	@Transactional 
+	public ArrayList<Course> findCoursesByLecturerId(String id) {
+		return clrepo.listCoursesByLecturerId(id);
+	}
+	
+	@Transactional
+	public ArrayList<Enrolment>listEnrolmentByCourseId(String id){
+		return erepo.findEnrolmentByCourseId(id);
+	}
+	
+	@Transactional
+	public Enrolment listEnrolmentByEnrolmentId(int id){
+		return erepo.findById(id).get();
+	}
+	
+	@Transactional
+	public void saveUpdatedGrades(Enrolment enrolment)
+	{
+		erepo.save(enrolment);
+
 	}
 
 	@Override
@@ -36,9 +75,9 @@ public class LecturerServiceImpl implements LecturerService
 	}
 
 	@Override
-	public int findLecturerIdbyEmail(String string) {
+	public String findLecturerIdbyEmail(String string) {
 		// TODO Auto-generated method stub
-		return 0;
+		return null;
 	}
 
 	@Override

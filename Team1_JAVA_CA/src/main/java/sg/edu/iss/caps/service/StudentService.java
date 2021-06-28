@@ -7,7 +7,9 @@ import sg.edu.iss.caps.domain.Student;
 
 public interface StudentService {
 
+
 	public ArrayList<Enrolment>listEnrolmentByCourseId(String courseId);
 	public ArrayList<Enrolment>listEnrolmentByStudentId(String studentId);
 	public Student getStudentByEmail(String email);
+
 }

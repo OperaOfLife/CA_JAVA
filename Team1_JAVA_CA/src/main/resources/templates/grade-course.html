@@ -62,5 +62,29 @@
 <br />
 	 <div th:replace="fragments/general.html :: footer"></div>
 
+	<!-- Display courses in a form of a drop down box -->
+	<fieldset>
+	<!-- This may be en error, look out for it -->
+			Courses <select th:field="${courses.courseName}">
+					<option th:each="course:${courses}" th:value="${course.courseName}"
+							th:text="${course.courseName}"></option>
+					</select>
+					<!-- Find out how does selecting this , send back to controller -->
+	</fieldset>
+	<h1 th:text="${course.courseName}">Default Course Title</h1>
+	<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Grade</th>
+				<th>Learn how to do Button</th>
+			</tr>
+			<tr th:each ="enrolment:${enrolments}">
+				<td th:text="${enrolment.student.studentId}">Default Id</td>
+				<td th:text="${enrolment.student.firstName}">Default Name</td>
+				<td th:text="${enrolment.grade}">Default grades</td>
+				<td>This is the button</td>
+			</tr>
+	</table>
 </body>
 </html>
