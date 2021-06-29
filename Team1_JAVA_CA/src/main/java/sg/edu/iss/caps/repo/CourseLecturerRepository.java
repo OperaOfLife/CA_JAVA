@@ -1,5 +1,7 @@
 package sg.edu.iss.caps.repo;
 
+
+
 import java.util.ArrayList;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,8 +14,14 @@ import sg.edu.iss.caps.domain.CourseLecturer;
 public interface CourseLecturerRepository extends JpaRepository<CourseLecturer, Integer>
 {
 
+
 	//Find Course Name by Linking up Course Ids and searching LecturerId
 	
 	@Query("SELECT c FROM CourseLecturer cl INNER JOIN cl.courses c INNER JOIN cl.lecturer l WHERE l.lecturerId LIKE :lecturerid")
 	public ArrayList<Course> listCoursesByLecturerId (@Param("lecturerid") String id);
+
+	@Query("SELECT cl FROM CourseLecturer cl INNER JOIN cl.courses c INNER JOIN cl.lecturer l WHERE l.email LIKE :email")
+	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (@Param("email") String email);
+	
+
 }

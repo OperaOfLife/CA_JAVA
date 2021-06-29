@@ -14,11 +14,17 @@ public interface EnrolmentRepository extends JpaRepository<Enrolment, Integer> {
 	@Query("SELECT e FROM Enrolment e INNER JOIN e.course c WHERE c.courseId LIKE :id")
 	public ArrayList<Enrolment>findEnrolmentByCourseId(@Param("id") String id);
 
+
 	/*
 	 * @Query("SELECT e FROM Enrolment e, Student s WHERE s.studentId LIKE :id")
 	 * public ArrayList<Enrolment>findEnrolmentByStudentId(@Param("id") String id);
 	 */
 	 @Query("SELECT e FROM Enrolment e INNER JOIN e.student s WHERE s.studentId LIKE :id")
 	 public ArrayList<Enrolment>findEnrolmentByStudentId(@Param("id") String id);
+
+
+	//list courses that a particular student is enrolled in using student email to search
+	@Query("SELECT e FROM Enrolment e INNER JOIN e.course c INNER JOIN e.student s WHERE s.email LIKE :email")
+	public ArrayList<Enrolment> listCoursesEnrolledByStudentEmail (@Param("email") String email);
 
 }

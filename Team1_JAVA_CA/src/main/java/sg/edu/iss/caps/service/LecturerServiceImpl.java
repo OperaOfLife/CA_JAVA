@@ -1,5 +1,7 @@
 package sg.edu.iss.caps.service;
 
+
+
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import sg.edu.iss.caps.domain.Course;
 
+
 import sg.edu.iss.caps.domain.Enrolment;
+
+import sg.edu.iss.caps.domain.CourseLecturer;
+
 import sg.edu.iss.caps.repo.CourseLecturerRepository;
 import sg.edu.iss.caps.repo.CourseRepository;
 import sg.edu.iss.caps.repo.EnrolmentRepository;
@@ -24,6 +30,7 @@ public class LecturerServiceImpl implements LecturerService {
 	@Autowired
 	CourseRepository crepo;
 	
+
 	@Autowired 
 	CourseLecturerRepository clrepo;	
 	
@@ -31,9 +38,13 @@ public class LecturerServiceImpl implements LecturerService {
 	EnrolmentRepository erepo;
 	
 	@Transactional
-	public String findLecturerbyEmail(String email) {
+	public String findLecturerbyEmail(String email)
+	{
 		return lrepo.findLecturerIdbyEmail(email);
 	}
+	
+
+	
 	
 	@Transactional
 	public ArrayList<Course> listAllcourses(){
@@ -84,5 +95,11 @@ public class LecturerServiceImpl implements LecturerService {
 	public Object findCourseNamesByLecturerId(int lecturerId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	//Select courses taught by a particular lecturer using lectureremail
+	@Transactional
+	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail) {
+		return clrepo.listCourseNamesByLecturerEmail(lectureremail);
 	}
 }

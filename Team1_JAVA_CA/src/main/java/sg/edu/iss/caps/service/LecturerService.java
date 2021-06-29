@@ -3,6 +3,7 @@ package sg.edu.iss.caps.service;
 import java.util.ArrayList;
 
 import sg.edu.iss.caps.domain.Course;
+import sg.edu.iss.caps.domain.CourseLecturer;
 import sg.edu.iss.caps.domain.Enrolment;
 
 public interface LecturerService {
@@ -15,6 +16,7 @@ public interface LecturerService {
 	public Object listEnrolmentByCourseId(int courseId);
 	public String findLecturerIdbyEmail(String string);
 	public Object findCourseNamesByLecturerId(int lecturerId);
+
 	
 	
 
@@ -22,5 +24,8 @@ public interface LecturerService {
 	public ArrayList<Enrolment>listEnrolmentByCourseId(String id);
 	public Enrolment listEnrolmentByEnrolmentId(int id);
 	public void saveUpdatedGrades(Enrolment enrolment);
+
+
+	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
 
 }

@@ -26,28 +26,35 @@ public class HomeController
 		return "home";
 	}
 	
+	
 	@GetMapping("/admin")
 	public String showAdmin(Model model)
 	{
 		return "home-admin";
 	}
 	
+	
 	@GetMapping("/student")
 	public String showStudent(Model model)
 	{
 		return "home-student";
 	}
+	
+	
 	@GetMapping("/lecturer")
 	public String showLecturer(Model model)
 	{
 		return "home-lecturer";
 	}
 	
+	
 	@GetMapping("/about")
 	public String showAbout(Model model)
 	{
 		return "about-us";
 	}
+	
+	
 	@GetMapping("/courses")
 	public String showCourses(Model model)
 	{
@@ -59,11 +66,11 @@ public class HomeController
 	}
 	
 	
-	
 	@GetMapping("/contact-us")
 	public String showContactUs(Model model)
 	{
 		return "contact-us";
 	}
+	
 
 }

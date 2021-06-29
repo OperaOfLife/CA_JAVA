@@ -1,5 +1,6 @@
 package sg.edu.iss.caps.domain;
 
+
 import java.util.Date;
 import java.util.List;
 
@@ -39,8 +40,6 @@ public class Lecturer
 
 
 
-
-
 	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, Date dateOfJoining,
 			String email, List<CourseLecturer> courselecturer) {
 		super();
@@ -51,6 +50,22 @@ public class Lecturer
 		this.dateOfJoining = dateOfJoining;
 		this.email = email;
 		this.courselecturer = courselecturer;
+	}
+
+
+
+
+
+
+	public Lecturer(String lecturerId, String firstName, String middleName, String lastName, Date dateOfJoining,
+			String email) {
+		super();
+		this.lecturerId = lecturerId;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.dateOfJoining = dateOfJoining;
+		this.email = email;
 	}
 
 
@@ -121,7 +136,10 @@ public class Lecturer
 
 
 
-	public Date getDateOfJoining() {
+
+	public Date getDateOfJoining()
+{
+
 		return dateOfJoining;
 	}
 
@@ -129,7 +147,10 @@ public class Lecturer
 
 
 
-	public void setDateOfJoining(Date dateOfJoining) {
+
+	public void setDateOfJoining(Date dateOfJoining) 
+{
+
 		this.dateOfJoining = dateOfJoining;
 	}
 
@@ -171,7 +192,5 @@ public class Lecturer
 
 	
 
-
-	
 
 }

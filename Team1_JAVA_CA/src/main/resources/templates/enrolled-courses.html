@@ -19,7 +19,7 @@
 
 <link rel="stylesheet" type="text/css" media="all" 	href="../../css/student.css" th:href="@{/css/student.css}" />
 
-<title>View enrolled course</title>
+<title>View Enrolled Courses</title>
 </head>
 <body>
 
@@ -46,9 +46,38 @@
     </div>
   </div>
 </nav>
-<h1>View enrolled courses</h1>
 
- 
+<h1>View Enrolled Courses</h1>
+
+<table border="1" style="border-collapse:collapse" width="100%">
+		<tr>
+			<th>Course Code</th>
+			<th>Course Name</th>
+			<th>Description</th>
+			<th>Course Credits</th>
+			<th>Start Date</th>
+			<th>Duration(Days)</th>
+		</tr>
+		
+		<tr th:each="data:${sdata}">
+			<td><span th:text="${data.course.courseId}">Course ID</span></td>
+			<td><span th:text="${data.course.courseName}">Course Name</span></td>
+			<td><span th:text="${data.course.description}">Course Description</span></td>
+			<td><span th:text="${data.course.credits}">Course Credits</span></td>
+			<td><span th:text="${data.course.courseStartDate}">Course Start Date</span></td>
+			<td><span th:text="${data.course.duration}">Duration(Days)</span></td>			
+		</tr>
+		
+	</table>
+
+		<br>
+		<br>
+		<form>
+		<input type="button" value="Back" style="float:right;" onclick="history.back()"></input>
+		</form>
+
+<br />
+
    <br />
 	 <div th:replace="fragments/general.html :: footer"></div> 
 

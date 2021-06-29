@@ -27,6 +27,7 @@ public class StudentServiceImpl implements StudentService
 	public ArrayList<Enrolment> listEnrolmentByCourseId(String id){
 		return erepo.findEnrolmentByCourseId(id);
 	}
+//<<<<<<< HEAD
 
 	@Override
 	public ArrayList<Enrolment> listEnrolmentByStudentId(String id) {
@@ -41,4 +42,11 @@ public class StudentServiceImpl implements StudentService
 		
 	}
 
+//=======
+	
+	@Transactional
+	public ArrayList<Enrolment> listCoursesEnrolledByStudentEmail (String email) {
+		return erepo.listCoursesEnrolledByStudentEmail(email);
+	}
+//>>>>>>> refs/remotes/origin/kat
 }

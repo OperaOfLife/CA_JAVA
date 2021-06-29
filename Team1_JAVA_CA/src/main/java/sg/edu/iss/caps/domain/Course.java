@@ -1,10 +1,13 @@
 package sg.edu.iss.caps.domain;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Course
@@ -13,9 +16,12 @@ public class Course
 	private String courseId;
 	private String courseName;
 	private String description;
-	private String classSize;
+	private int classSize;
 	private int credits;
 	private int duration;
+	
+	@DateTimeFormat(pattern="dd-MM-yyyy")
+	private LocalDate courseStartDate;
 	
 	@OneToMany(mappedBy="courses")
 	private List<CourseLecturer> Courselecturer;
@@ -28,10 +34,10 @@ public class Course
 	}
 	
 	
-	
 
-	public Course(String courseId, String courseName, String description, String classSize, int credits, int duration,
-			List<CourseLecturer> courselecturer, List<Enrolment> enrolment) {
+
+	public Course(String courseId, String courseName, String description, int classSize, int credits, int duration,
+			LocalDate courseStartDate, List<CourseLecturer> courselecturer, List<Enrolment> enrolment) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
@@ -39,8 +45,24 @@ public class Course
 		this.classSize = classSize;
 		this.credits = credits;
 		this.duration = duration;
+		this.courseStartDate = courseStartDate;
 		Courselecturer = courselecturer;
 		this.enrolment = enrolment;
+	}
+
+	
+	
+
+	public Course(String courseId, String courseName, String description, int classSize, int credits, int duration,
+			LocalDate courseStartDate) {
+		super();
+		this.courseId = courseId;
+		this.courseName = courseName;
+		this.description = description;
+		this.classSize = classSize;
+		this.credits = credits;
+		this.duration = duration;
+		this.courseStartDate = courseStartDate;
 	}
 
 
@@ -88,14 +110,14 @@ public class Course
 
 
 
-	public String getClassSize() {
+	public int getClassSize() {
 		return classSize;
 	}
 
 
 
 
-	public void setClassSize(String classSize) {
+	public void setClassSize(int classSize) {
 		this.classSize = classSize;
 	}
 
@@ -125,6 +147,20 @@ public class Course
 
 	public void setDuration(int duration) {
 		this.duration = duration;
+	}
+
+
+
+
+	public LocalDate getCourseStartDate() {
+		return courseStartDate;
+	}
+
+
+
+
+	public void setCourseStartDate(LocalDate courseStartDate) {
+		this.courseStartDate = courseStartDate;
 	}
 
 
@@ -161,15 +197,11 @@ public class Course
 	@Override
 	public String toString() {
 		return "Course [courseId=" + courseId + ", courseName=" + courseName + ", description=" + description
-				+ ", classSize=" + classSize + ", credits=" + credits + ", duration=" + duration + ", Courselecturer="
-				+ Courselecturer + ", enrolment=" + enrolment + "]";
+				+ ", classSize=" + classSize + ", credits=" + credits + ", duration=" + duration + ", courseStartDate="
+				+ courseStartDate + ", Courselecturer=" + Courselecturer + ", enrolment=" + enrolment + "]";
 	}
 
 
-	
-	
 
-
-	
 
 }

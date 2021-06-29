@@ -9,7 +9,12 @@ public interface StudentService {
 
 
 	public ArrayList<Enrolment>listEnrolmentByCourseId(String courseId);
+
 	public ArrayList<Enrolment>listEnrolmentByStudentId(String studentId);
 	public Student getStudentByEmail(String email);
 
+//=======
+	
+	public ArrayList<Enrolment> listCoursesEnrolledByStudentEmail (String email);
+//>>>>>>> refs/remotes/origin/kat
 }
