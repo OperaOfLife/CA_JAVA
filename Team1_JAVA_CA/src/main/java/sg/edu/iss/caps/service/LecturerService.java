@@ -1,6 +1,7 @@
 package sg.edu.iss.caps.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.CourseLecturer;
@@ -27,5 +28,8 @@ public interface LecturerService {
 
 
 	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
+	
+	//Genesis Student Performace
+	public List<Enrolment> listAll(String keyword);
 
 }
