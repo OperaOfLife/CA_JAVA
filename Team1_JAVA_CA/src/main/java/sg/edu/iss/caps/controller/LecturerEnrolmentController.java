@@ -1,7 +1,10 @@
 package sg.edu.iss.caps.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,6 +24,7 @@ public class LecturerEnrolmentController
 
 	@Autowired
 	LecturerService lservice;
+
 	
 	//Display All Courses 1/2
 	@RequestMapping("/home")
@@ -74,10 +78,15 @@ public class LecturerEnrolmentController
 		lservice.saveUpdatedGrades(enrolment);
 		return "forward:/editGrades/{enrolmentid}";
 	}
-	@RequestMapping("/performance")
-	public String performance(@ModelAttribute("enrolment") Enrolment enrolment,Model model)
-	{
-		return "view-student-performance";
-	}
+	
+	  @RequestMapping("/performance")
+	  public String performance(Model model, @Param("keyword") String keyword)
+	  { 
+		  List<Enrolment> listEnrolments = lservice.listAll(keyword); 
+		  model.addAttribute("listenrolments", listEnrolments); 
+		  model.addAttribute("keyword", keyword); 
+		  return 	  "view-student-performance"; 
+		  }
+	 
 	
 }

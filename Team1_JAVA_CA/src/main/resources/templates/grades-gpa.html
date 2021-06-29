@@ -59,7 +59,20 @@
 			 <td th:text = "${enrol.course.courseName}"></td>
 		    <td th:text = "${enrol.grade}"></td>
 			 <td th:text = "${enrol.status}"></td> 
-			 <td th:text = "${gpa}"></td>
+			 
+			 <td th:text = "${gpa[enrolments.indexOf(enrol)]}"></td>
+			 
+			  <!-- <td th:switch = "${enrol.grade}">
+			  <span th:case="'A'">5</span>
+			   <span th:case="'B'">4.5</span>
+			 
+			  <span th:case="'C'">3</span>
+			 
+			  <span th:case="'D'">2</span>
+			 
+			  </td>  -->
+			 <!--  <td th:text = "${#StudentGradesGPAController.calculate(enrol.grade)}"></td>  -->
+			 <!-- <td  th:utext="#{@{/studentGrades/gpa/}+${enrol.grade}}" ></td>  -->
 		</tr>
 	
 	</table>

@@ -47,13 +47,41 @@
   </div>
 </nav>
 
+<h1>View Student's Performance</h1> 
+ <form th:action="@{/lecturerenrolment/performance}"> 
+  Search: <input type="text" name="keyword" id="keyword" size="50" 
+   th:value="${keyword}" required /> &nbsp; <input type="submit" 
+   value="Search" /> &nbsp; <input type="button" value="Clear" 
+   id="btnClear" onclick="clearSearch()" /> 
+ </form> 
+ <br /> 
+ <table class="center"> 
+  <tr> 
+   <th>Student Name</th> 
+   <th>Course Id</th> 
+   <th>Course Name</th> 
+   <th>Enrolment Status</th> 
+   <th>Grade</th> 
+  </tr> 
+  <tr th:each="enrolment : ${listenrolments}"> 
+   <td th:text="${enrolment.student.firstName}">Student Name</td> 
+   <td th:text="${enrolment.course.courseId}">Course Id</td> 
+   <td th:text="${enrolment.course.courseName}">Course Name</td> 
+   <td th:text="${enrolment.status}">Enrolment Status</td> 
+   <td th:text="${enrolment.grade}">Student Grade</td> 
+  </tr> 
+ </table> 
+ 
+ 
+ <br /> 
+ <div th:replace="fragments/general.html :: footer"></div> 
+ <script type="text/javascript"> 
+  function clearSearch() { 
+   window.location = "[[@{/lecturerenrolment/performance}]]"; 
+  } 
+ </script>
+ 
 
-  </div>
-    
-
-<h1>View Student's Performance</h1>
-<br />
-	 <div th:replace="fragments/general.html :: footer"></div>
 
 </body>
 </html>

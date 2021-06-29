@@ -35,39 +35,10 @@ public class LoginController
 	String errmsg="";
 	String msg="NO SUCH EMAIL ID EXISTS.";
 	String msg1="USER ALREADY EXISTS.";
-
-	/*
-	 * private Object SecurityContextHolder;
-	 * 
-	 * 
-	 * Authentication auth = ((Object)
-	 * SecurityContextHolder).getContext().getAuthentication(); String username =
-	 * auth.getUsername();
-	 * 
-	 */
 	
-	/*
-	 * @RequestMapping(value = "/myusername", method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public String currentUserName(Principal principal) {
-	 * p=principal.getName(); return principal.; }
-	 */
-	  
-	/*
-	 * @RequestMapping(value = "/myusername", method = RequestMethod.GET)
-	 * 
-	 * @ResponseBody public String getUsername(HttpServletRequest req) { return
-	 * req.getUserPrincipal.getName(); }
-	 */
+	
 	 
-	  @RequestMapping("/user")
-	  public void user(Authentication authentication)
-	  {
-	        String properties =  authentication.getUsername();
-	        //String loginProperty = properties.get("login");
-	        //Do what you want to do with your property
-	    }
-	
+	 
 	
 	@Autowired
 	public void setUserInterface(LoginService ls) {
@@ -136,7 +107,9 @@ public class LoginController
 		if(lservice.authenticate(user)) 
 		{
 			User u = lservice.findByName(user.getUsername());
-			session.setAttribute("usession", u);	
+			session.setAttribute("usession", u);
+			session.setAttribute("userid", user.getUsername());
+			
 			
 			if(u.getRole().equals(RoleType.ADMIN)) 
 				  return "home-admin";			  

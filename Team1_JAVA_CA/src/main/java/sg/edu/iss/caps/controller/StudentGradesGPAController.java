@@ -13,6 +13,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -43,55 +44,55 @@ public class StudentGradesGPAController
 	  }
 	 
 	@RequestMapping(value = "/gradesGPA" )
-	public String gradesGPA(Model model, HttpSession session )
+	public String gradesGPA( Model model, HttpSession session )
 	{
-		
-		
-		/*
-		 * String currentuser= session.usession. Student
-		 * student=srepo.findStudentIdByEmail(currentuser);
-		 */
-		/*
-		 * String sess= session.getId(); Student
-		 * student=srepo.findStudentIdByEmail(sess);
-		 */
-		 
+		List<String> gp=new ArrayList<>();
+		String  grd="";
 		Student student=srepo.findStudentIdByEmail("kat@gmail.com");
 		
 		List<Enrolment> enrolments = (List<Enrolment>) erepo.findEnrolmentByStudentId(student.getStudentId());
-		/*
-		 * List<String> g=new ArrayList<>(); for (Enrolment e : enrolments) {
-		 * g.add(calculate(e.getGrade())); }
-		 */
 		
-		  String g="";
-		  for (Enrolment e : enrolments)
-		  { 
-			  g=calculate(e.getGrade());
-			  }
-		  model.addAttribute("gpa", g);
+		  for(Enrolment e: enrolments)
+		  {
+			  grd=e.getGrade(); 
+			  gp.add(calculate(grd));
+		  
+		  }
+		  model.addAttribute("gpa", gp) ;
 		 
 		model.addAttribute("enrolments",enrolments);
 		return "grades-gpa";
 	}
 	
 	
-	public String calculate(String grade)
-	{
-		String gpa="NA";
-		if (grade.equalsIgnoreCase("A"))
-			gpa="5";
-		else if (grade.equalsIgnoreCase("B"))
-			gpa="4.5";
-		else if (grade.equalsIgnoreCase("C"))
-			gpa="4";
-		else if (grade.equalsIgnoreCase("D"))
-			gpa="3.5";
-		else
-			gpa="3";
-		
-		return gpa;
-		
-	}
+	/*
+	 * @RequestMapping("/gpa/{grade}") public String
+	 * calculate(@PathVariable("grade") String grade,Model model) { String gpa="NA";
+	 * if (grade.equalsIgnoreCase("A")) gpa="5"; else if
+	 * (grade.equalsIgnoreCase("B")) gpa="4.5"; else if
+	 * (grade.equalsIgnoreCase("C")) gpa="4"; else if (grade.equalsIgnoreCase("D"))
+	 * gpa="3.5"; else gpa="3"; //model.addAttribute("gpa",gpa); return gpa;
+	 * 
+	 * }
+	 */
+	 
 	
+	
+	  public String calculate(String grade) { 
+		  String gpa="NA"; 
+		  if (grade.equalsIgnoreCase("A"))
+			  gpa="5"; 
+		  else if (grade.equalsIgnoreCase("B"))
+			  gpa="4.5"; 
+		  else if (grade.equalsIgnoreCase("C"))
+			  gpa="4"; 
+		  else if 	  (grade.equalsIgnoreCase("D"))
+			  gpa="3.5"; 
+		  else
+			  gpa="3";
+	  
+	  return gpa;
+	  
+	  }
+	 
 }

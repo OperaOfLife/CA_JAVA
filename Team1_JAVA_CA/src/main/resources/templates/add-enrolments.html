@@ -67,8 +67,21 @@
 		<td>Course ID  : </td>
 		<td>
 		<fieldset>
-			 <input type="text" th:field="*{course.courseId}">
-			<p th:if="${#fields.hasErrors('course.courseId')}" th:errors="*{course.courseId}"></p>
+			 <select th:field="*{course}">
+				<option th:each="course:${courses}" th:value="${course.courseId}"
+					th:text="${course.courseId}"></option>
+			</select>
+		</fieldset>
+		</td>
+		</tr>
+		<tr>
+		<td>Student ID  : </td>
+		<td>
+		<fieldset>
+			 <select th:field="*{student}">
+				<option th:each="student:${students}" th:value="${student.studentId}"
+					th:text="${student.studentId}"></option>
+			</select>
 		</fieldset>
 		</td>
 		</tr>
@@ -95,8 +108,10 @@
 		<td>Status :</td>
 		<td>
 			<fieldset>
-			 <input type="text" th:field="*{status}">
-			<p th:if="${#fields.hasErrors('status')}" th:errors="*{status}"></p>
+			 <select th:field="*{status}">
+				<option th:each="status : ${T(sg.edu.iss.caps.domain.EnrolmentStatus).values()}" 
+        		th:value="${status}" th:text="${status}"></option>
+			</select>
 		</fieldset>
 		</td>
 		</tr>

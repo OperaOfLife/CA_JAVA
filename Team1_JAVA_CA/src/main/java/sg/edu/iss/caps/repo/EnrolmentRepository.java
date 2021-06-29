@@ -1,6 +1,7 @@
 package sg.edu.iss.caps.repo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -27,4 +28,9 @@ public interface EnrolmentRepository extends JpaRepository<Enrolment, Integer> {
 	@Query("SELECT e FROM Enrolment e INNER JOIN e.course c INNER JOIN e.student s WHERE s.email LIKE :email")
 	public ArrayList<Enrolment> listCoursesEnrolledByStudentEmail (@Param("email") String email);
 
+	//Genesis Student Performance 
+	 @Query("SELECT e FROM Enrolment e INNER JOIN e.student s INNER JOIN e.course c " 
+			   + "WHERE CONCAT(s.studentId, ' ', s.firstName, ' ', s.middleName, ' ', s.lastName)" 
+			   + "LIKE %?1%") 
+			 public List<Enrolment> search(String keyword);
 }

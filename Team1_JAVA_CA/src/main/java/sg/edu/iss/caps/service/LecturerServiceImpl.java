@@ -3,6 +3,7 @@ package sg.edu.iss.caps.service;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,8 +44,14 @@ public class LecturerServiceImpl implements LecturerService {
 		return lrepo.findLecturerIdbyEmail(email);
 	}
 	
-
-	
+	//Genesis Student Performance  
+	 @Transactional  
+	 public List<Enrolment> listAll(String keyword){ 
+		  if (keyword != null) { 
+		   return erepo.search(keyword); 
+		  } 
+		  return erepo.findAll(); 
+		 }
 	
 	@Transactional
 	public ArrayList<Course> listAllcourses(){
