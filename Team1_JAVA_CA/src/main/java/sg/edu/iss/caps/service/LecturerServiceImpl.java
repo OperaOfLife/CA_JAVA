@@ -10,12 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import sg.edu.iss.caps.domain.Course;
-
-
-import sg.edu.iss.caps.domain.Enrolment;
-
 import sg.edu.iss.caps.domain.CourseLecturer;
-
+import sg.edu.iss.caps.domain.Enrolment;
 import sg.edu.iss.caps.repo.CourseLecturerRepository;
 import sg.edu.iss.caps.repo.CourseRepository;
 import sg.edu.iss.caps.repo.EnrolmentRepository;
@@ -109,4 +105,11 @@ public class LecturerServiceImpl implements LecturerService {
 	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail) {
 		return clrepo.listCourseNamesByLecturerEmail(lectureremail);
 	}
+	
+	/*
+	 * //Genesis Student Performance
+	 * 
+	 * @Transactional public List<Enrolment> listAll(String keyword){ if (keyword !=
+	 * null) { return erepo.search(keyword); } return erepo.findAll(); }
+	 */
 }

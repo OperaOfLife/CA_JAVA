@@ -5,14 +5,19 @@
 
 
 <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+<link rel="stylesheet"
+	href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
+<link rel="stylesheet"
+	href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
- <link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
-<link rel="stylesheet" type="text/css" media="all" 	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
-
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/home.css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/general.css" th:href="@{/css/general.css}" />
+<link rel="stylesheet" type="text/css" media="all"
+	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
 
 <title>Student's Performance</title>
 </head>
@@ -20,32 +25,34 @@
 
 
 
-<header th:insert="fragments/general.html :: header"> </header> 
+	<header th:insert="fragments/general.html :: header"> </header>
 
-      <nav id="nav2" class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
-      <div class="container-fluid">
-    
-    <div class="collapse navbar-collapse" id="homenavbar2">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-       
-        <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="../../courselecturer/home" th:href="@{/courselecturer/home}">Courses Taught</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" aria-current="page" href="../../lecturerenrolment/home" th:href="@{/lecturerenrolment/home}">Course Enrolment</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link " aria-current="page" href="../../lecturerenrolment/gradecourse" th:href="@{/lecturerenrolment/gradecourse}">Grade A Course</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link active " aria-current="page" href="../../lecturerenrolment/performance" th:href="@{/lecturerenrolment/performance}">Student Performance</a>
-        </li>
-                
-      </ul>
-      
-    </div>
-  </div>
-</nav>
+	<nav id="nav2"
+		class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
+		<div class="container-fluid">
+
+			<div class="collapse navbar-collapse" id="homenavbar2">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+					<li class="nav-item"><a class="nav-link" aria-current="page"
+						href="../../courselecturer/home" th:href="@{/courselecturer/home}">Courses
+							Taught</a></li>
+					<li class="nav-item"><a class="nav-link" aria-current="page"
+						href="../../lecturerenrolment/home"
+						th:href="@{/lecturerenrolment/home}">Course Enrolment</a></li>
+					<li class="nav-item"><a class="nav-link " aria-current="page"
+						href="../../lecturerenrolment/gradecourse"
+						th:href="@{/lecturerenrolment/gradecourse}">Grade A Course</a></li>
+					<li class="nav-item"><a class="nav-link active "
+						aria-current="page" href="../../lecturerenrolment/performance"
+						th:href="@{/lecturerenrolment/performance}">Student
+							Performance</a></li>
+
+				</ul>
+
+			</div>
+		</div>
+	</nav>
 
 <h1>View Student's Performance</h1> 
  <form th:action="@{/lecturerenrolment/performance}"> 
@@ -82,6 +89,44 @@
  </script>
  
 
+<<<<<<< HEAD
+=======
+	</div>
 
+>>>>>>> refs/remotes/origin/master
+
+	<h1>View Student's Performance</h1>
+	<form th:action="@{/lecturerenrolment/performance}">
+		Search: <input type="text" name="keyword" id="keyword" size="50"
+			th:value="${keyword}" required /> &nbsp; <input type="submit"
+			value="Search" /> &nbsp; <input type="button" value="Clear"
+			id="btnClear" onclick="clearSearch()" />
+	</form>
+	<br />
+	<table class="center">
+		<tr>
+			<th>Student Name</th>
+			<th>Course Id</th>
+			<th>Course Name</th>
+			<th>Enrolment Status</th>
+			<th>Grade</th>
+		</tr>
+		<tr th:each="enrolment : ${listenrolments}">
+			<td th:text="${enrolment.student.firstName}">Student Name</td>
+			<td th:text="${enrolment.course.courseId}">Course Id</td>
+			<td th:text="${enrolment.course.courseName}">Course Name</td>
+			<td th:text="${enrolment.status}">Enrolment Status</td>
+			<td th:text="${enrolment.grade}">Student Grade</td>
+		</tr>
+	</table>
+
+
+	<br />
+	<div th:replace="fragments/general.html :: footer"></div>
+	<script type="text/javascript">
+		function clearSearch() {
+			window.location = "[[@{/lecturerenrolment/performance}]]";
+		}
+	</script>
 </body>
 </html>

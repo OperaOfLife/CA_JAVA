@@ -18,8 +18,6 @@ public interface LecturerService {
 	public String findLecturerIdbyEmail(String string);
 	public Object findCourseNamesByLecturerId(int lecturerId);
 
-	//Genesis Student Performace 
-	public List<Enrolment> listAll(String keyword);
 	
 
 	public ArrayList<Course> findCoursesByLecturerId(String id);
@@ -29,5 +27,8 @@ public interface LecturerService {
 
 
 	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
+	
+	//Genesis Student Performace
+	public List<Enrolment> listAll(String keyword);
 
 }

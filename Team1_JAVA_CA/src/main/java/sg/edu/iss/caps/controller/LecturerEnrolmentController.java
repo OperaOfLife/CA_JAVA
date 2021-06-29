@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.Enrolment;
-import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.service.LecturerService;
 
 @Controller
@@ -78,15 +77,25 @@ public class LecturerEnrolmentController
 		lservice.saveUpdatedGrades(enrolment);
 		return "forward:/editGrades/{enrolmentid}";
 	}
-	
-	  @RequestMapping("/performance")
-	  public String performance(Model model, @Param("keyword") String keyword)
-	  { 
-		  List<Enrolment> listEnrolments = lservice.listAll(keyword); 
-		  model.addAttribute("listenrolments", listEnrolments); 
-		  model.addAttribute("keyword", keyword); 
-		  return 	  "view-student-performance"; 
-		  }
-	 
+
+	/*
+	 * <<<<<<< HEAD
+	 * 
+	 * @RequestMapping("/performance") public String performance(Model
+	 * model, @Param("keyword") String keyword) { List<Enrolment> listEnrolments =
+	 * lservice.listAll(keyword); model.addAttribute("listenrolments",
+	 * listEnrolments); model.addAttribute("keyword", keyword); return
+	 * "view-student-performance"; }
+	 * 
+	 * =======
+	 */
+	@RequestMapping("/performance")
+	public String performance(Model model, @Param("keyword") String keyword){
+		List<Enrolment> listEnrolments = lservice.listAll(keyword);
+		model.addAttribute("listenrolments", listEnrolments);
+		model.addAttribute("keyword", keyword);
+		return "view-student-performance";
+	}
+
 	
 }
