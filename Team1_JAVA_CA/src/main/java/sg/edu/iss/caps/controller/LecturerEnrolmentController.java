@@ -39,18 +39,14 @@ public class LecturerEnrolmentController
 		return "view-course-enrolment-details";
 	}
 
-	//Display lecturer Courses 1/4
-	@RequestMapping("/gradecourse")
-	public String gradeCourse(Model model)
-	{
-
-		//First find lecturerId from lecturer email 
-		String lecturerId = lservice.findLecturerIdbyEmail("tin@gmail.com");
-		//Find courses associated with lecturerId
-		model.addAttribute("courses",lservice.findCoursesByLecturerId(lecturerId));
-		return "grade-course";
-	}
-	
+	@RequestMapping("/gradecourse") 
+	 public String gradeCourse(Model model) 
+	 { 
+	 
+	  //Find courses associated with lecturerId 
+	  model.addAttribute("courses",lservice.listCourseNamesByLecturerEmail("tin@gmail.com")); 
+	  return "grade-course"; 
+	 }
 	//Display enrolments by course id 2/4
 	@RequestMapping("/getEnrolments/{courseId}")
 	public String getEnrolmentsByCourseId(@PathVariable("courseId") String courseId, Model model) {
@@ -60,10 +56,10 @@ public class LecturerEnrolmentController
 	
 	//Display students by enrolment id 3/4
 	@RequestMapping("/editGrades/{enrolmentid}")
-	public String showUpdateGrades(@PathVariable("id") int id, Model model) {
-		Enrolment enrolment = lservice.listEnrolmentByEnrolmentId(id);
+	public String showUpdateGrades(@PathVariable("enrolmentid") int id, Model model) {
+		//Enrolment enrolment = lservice.listEnrolmentByEnrolmentId(id);
 		
-		model.addAttribute("enrolment", enrolment);
+		model.addAttribute("enrolment", lservice.listEnrolmentByEnrolmentId(id));
 		return "grade-course-3";
 	}
 

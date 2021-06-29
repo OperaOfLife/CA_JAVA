@@ -28,7 +28,7 @@ public class StudentEnrolmentController
 	@RequestMapping("/enrolledCourses")
 	public String showEnrolledCourses(@ModelAttribute("courses") Course courses,Model model)
 	{
-		model.addAttribute("sdata", sservice.listCoursesEnrolledByStudentEmail("genesistan@gmail.com"));
+		model.addAttribute("sdata", sservice.listCoursesEnrolledByStudentEmail("kat@gmail.com"));
 		return "enrolled-courses";
 	}
 }

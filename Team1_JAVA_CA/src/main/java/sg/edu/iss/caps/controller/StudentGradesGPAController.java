@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
@@ -42,14 +43,17 @@ public class StudentGradesGPAController
 	  }
 	 
 	@RequestMapping(value = "/gradesGPA" )
-	public String gradesGPA(Model model, 
-								HttpSession session )
+	public String gradesGPA(Model model, HttpSession session )
 	{
 		
 		
 		/*
 		 * String currentuser= session.usession. Student
 		 * student=srepo.findStudentIdByEmail(currentuser);
+		 */
+		/*
+		 * String sess= session.getId(); Student
+		 * student=srepo.findStudentIdByEmail(sess);
 		 */
 		 
 		Student student=srepo.findStudentIdByEmail("kat@gmail.com");

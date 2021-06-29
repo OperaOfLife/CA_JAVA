@@ -5,20 +5,15 @@
 
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
-<link rel="stylesheet"
-	href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../bootstrap/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 
-<link rel="stylesheet" type="text/css" media="all"
-	href="../../css/home.css" th:href="@{/css/home.css}" />
-<link rel="stylesheet" type="text/css" media="all"
-	href="../../css/general.css" th:href="@{/css/general.css}" />
-<link rel="stylesheet" type="text/css" media="all"
-	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
-
+    <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
+ <link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
+	
 
 <title>Grade A Course</title>
 </head>
@@ -26,54 +21,70 @@
 
 
 
-	<header th:insert="fragments/general.html :: header"> </header>
+<header th:insert="fragments/general.html :: header"> </header> 
 
-	<nav id="nav2"
-		class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
-		<div class="container-fluid">
-
-			<div class="collapse navbar-collapse" id="homenavbar2">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="../../courselecturer/home" th:href="@{/courselecturer/home}">Courses
-							Taught</a></li>
-					<li class="nav-item"><a class="nav-link" aria-current="page"
-						href="../../lecturerenrolment/home"
-						th:href="@{/lecturerenrolment/home}">Course Enrolment</a></li>
-					<li class="nav-item"><a class="nav-link active "
-						aria-current="page" href="../../lecturerenrolment/gradecourse"
-						th:href="@{/lecturerenrolment/gradecourse}">Grade A Course</a></li>
-					<li class="nav-item"><a class="nav-link " aria-current="page"
-						href="../../lecturerenrolment/performance"
-						th:href="@{/lecturerenrolment/performance}">Student
-							Performance</a></li>
-
-				</ul>
-
-			</div>
-		</div>
-	</nav>
+      <nav id="nav2" class="navbar  navbar-default navbar-expand-lg navbar-light bg-info">
+      <div class="container-fluid">
+    
+    <div class="collapse navbar-collapse" id="homenavbar2">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+       
+        <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="../../courselecturer/home" th:href="@{/courselecturer/home}">Courses Taught</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" aria-current="page" href="../../lecturerenrolment/home" th:href="@{/lecturerenrolment/home}">Course Enrolment</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link active " aria-current="page" href="../../lecturerenrolment/gradecourse" th:href="@{/lecturerenrolment/gradecourse}">Grade A Course</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link " aria-current="page" href="../../lecturerenrolment/performance" th:href="@{/lecturerenrolment/performance}">Student Performance</a>
+        </li>
+                
+      </ul>
+      
+    </div>
+  </div>
+</nav>
 
 
-	</div>
 
-	<h1 th:text="${course.course_name}">Default Title</h1>
+<!-- <h1 th:text="${enrolment.courses.course_name}">Default Title</h1> --> 
+  
+ <form action="#" 
+  th:action="@{/lecturerenrolment/updateGrades/{id}(id=${enrolment.enrolmentId})}" 
+  th:object="${enrolment}" method="post"> 
+   <table>
+   <tr>
+   <td>
+   Course Name</td>
+   <td>
+   <fieldset>  
+   <input type="text" th:field="${enrolment.course.courseName}" id="cname" placeholder="Course Name"> 
+    </fieldset>
+    </td>
+    </tr>
+    </table>
+   <!-- <label for="desc"></label>  
+   <input type="hidden" th:field="${enrolment.course.description}" id="desc" placeholder="Description"> 
+    
+   <label for="size"></label>  
+   <input type="hidden" th:field="${enrolment.course.classSize}" id="size" placeholder="Class Size"> 
+    
+   <label for="duration"></label>  
+   <input type="hidden" th:field="${enrolment.course.duration}" id="duration" placeholder="Duration"> 
+    
+   <label for="grade">Credits</label>  
+   <input type="text" th:field="${enrolment.course.credits}" id="grade" placeholder="Grades">  
+    
+   <input type="submit" value="Update Credits">  -->
+ </form>
+
+
+	
 		<br />
 		<div th:replace="fragments/general.html :: footer"></div>
 
-	<form action="#"
-		th:action="@{/updateGrades/{enrolmentid}(id = ${enrolment.enrolmentId)}"
-		th:object="${enrolment}"
-		method="post">
-			<fieldset>
-					Student Name <select th:field="*{student.firstName}"></select>
-			</fieldset>
-			<fieldset>
-					<label for="grade">Grades</label>
-					<input type="text" th:field="*{grade}" id="grade" placeholder="Grades">
-					<input type="submit" value = "Update Grade">
-			</fieldset>
-		</form>
 </body>
 </html>
