@@ -26,7 +26,9 @@ public class LoginController
 	@Autowired
 	LoginService lservice;
 	
-	
+	String errmsg="";
+	String msg="NO SUCH EMAIL ID EXISTS.";
+	String msg1="USER ALREADY EXISTS.";
 	
 	@Autowired
 	public void setUserInterface(LoginService ls) {
@@ -55,7 +57,7 @@ public class LoginController
 	{
 		
 		
-		if(! lservice.authenticate(user)) 
+		if(! lservice.authenticateRegister(user)) 
 		{
 			Student s=lservice.studentByEmail(user.getUsername());
 			Lecturer l=lservice.lecturerByEmail(user.getUsername());
@@ -64,12 +66,18 @@ public class LoginController
 			else if(l!=null)
 					user.setRole(RoleType.LECTURER);
 			else
-				return "error";
+			{
+				model.addAttribute("errmsg",msg );
+				return "register";
+			}
 			lservice.createUser(user);
 			return "home";
 		}
 		else
+		{
+			model.addAttribute("errmsg",msg1 );
 			return "register";
+		}
 	}
 	
 	
@@ -98,7 +106,10 @@ public class LoginController
 			else if(u.getRole().equals(RoleType.STUDENT))
 	 			    return "home-student";
 			  else
-				  return "register";
+			  {
+				  model.addAttribute("errmsg",msg );
+				 return "register";
+			  }
 		}
 		else
 			return "login";

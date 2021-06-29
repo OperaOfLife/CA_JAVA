@@ -45,6 +45,16 @@ public class LoginServiceImpl implements LoginService
 		else
 			return false;
 	}
+	
+	@Override
+	public boolean authenticateRegister(User user)
+	{
+		User fromDB = urepo.findUserByUsername(user.getUsername());
+		if (fromDB != null)
+			return true;
+		else
+			return false;
+	}
 
 	@Override
 	public User findByName(String name) 

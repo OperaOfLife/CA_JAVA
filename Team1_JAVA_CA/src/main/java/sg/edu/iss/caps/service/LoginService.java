@@ -18,5 +18,6 @@ public interface LoginService
 	public RoleType findRoleByName(String name);
 	public Lecturer lecturerByEmail(String email);
 	public Student studentByEmail(String email);
+	boolean authenticateRegister(User user);
 	
 }

@@ -45,7 +45,7 @@ public class LecturerEnrolmentController
 	{
 
 		//First find lecturerId from lecturer email 
-		String lecturerId = lservice.findLecturerIdbyEmail("XXX@gmail.com");
+		String lecturerId = lservice.findLecturerIdbyEmail("tin@gmail.com");
 		//Find courses associated with lecturerId
 		model.addAttribute("courses",lservice.findCoursesByLecturerId(lecturerId));
 		return "grade-course";

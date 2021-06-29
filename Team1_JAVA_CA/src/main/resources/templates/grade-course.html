@@ -49,14 +49,20 @@
 
 
 
-
-
-
-<h1>Grade A Course</h1>
-
-
-
-
+<table>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Grade</th>
+				<th>Learn how to do Button</th>
+			</tr>
+			<tr th:each ="enrolment:${enrolments}">
+				<td th:text="${enrolment.student.studentId}">Default Id</td>
+				<td th:text="${enrolment.student.firstName}">Default Name</td>
+				<td th:text="${enrolment.grade}">Default grades</td>
+				<td>This is the button</td>
+			</tr>
+	</table>
 
 
 <br />

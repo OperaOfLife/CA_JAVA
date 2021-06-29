@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.Enrolment;
 import sg.edu.iss.caps.domain.Student;
+import sg.edu.iss.caps.domain.User;
 import sg.edu.iss.caps.repo.EnrolmentRepository;
 import sg.edu.iss.caps.repo.StudentRepository;
 
@@ -41,12 +42,14 @@ public class StudentGradesGPAController
 	 
 	@RequestMapping(value = "/gradesGPA" , method = RequestMethod.GET)
 	public String gradesGPA(Model model, 
-								HttpSession session,Authentication authentication )
+								HttpSession session,User user )
 	{
+		
 		/*
-		 * String currentuser= authentication.getUsername(); Student
-		 * student=srepo.findStudentIdByEmail("kat@gmail.com");
+		 * String currentuser= user.getUsername(); Student
+		 * student=srepo.findStudentIdByEmail(currentuser);
 		 */
+		 
 		Student student=srepo.findStudentIdByEmail("kat@gmail.com");
 		List<Enrolment> enrolments = (List<Enrolment>) erepo.findEnrolmentByStudentId(student.getStudentId());
 		model.addAttribute("enrolments",enrolments);
