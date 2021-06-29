@@ -1,6 +1,7 @@
 package sg.edu.iss.caps.controller;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -40,36 +41,52 @@ public class StudentGradesGPAController
 	     model.addAttribute("currentuser", currentuser);
 	  }
 	 
-	@RequestMapping(value = "/gradesGPA" , method = RequestMethod.GET)
+	@RequestMapping(value = "/gradesGPA" )
 	public String gradesGPA(Model model, 
-								HttpSession session,User user )
+								HttpSession session )
 	{
 		
+		
 		/*
-		 * String currentuser= user.getUsername(); Student
+		 * String currentuser= session.usession. Student
 		 * student=srepo.findStudentIdByEmail(currentuser);
 		 */
 		 
 		Student student=srepo.findStudentIdByEmail("kat@gmail.com");
+		
 		List<Enrolment> enrolments = (List<Enrolment>) erepo.findEnrolmentByStudentId(student.getStudentId());
+		/*
+		 * List<String> g=new ArrayList<>(); for (Enrolment e : enrolments) {
+		 * g.add(calculate(e.getGrade())); }
+		 */
+		
+		  String g="";
+		  for (Enrolment e : enrolments)
+		  { 
+			  g=calculate(e.getGrade());
+			  }
+		  model.addAttribute("gpa", g);
+		 
 		model.addAttribute("enrolments",enrolments);
 		return "grades-gpa";
 	}
 	
+	
 	public String calculate(String grade)
 	{
 		String gpa="NA";
-		if (gpa.equalsIgnoreCase("a"))
+		if (grade.equalsIgnoreCase("A"))
 			gpa="5";
-		else if (gpa.equalsIgnoreCase("b"))
+		else if (grade.equalsIgnoreCase("B"))
 			gpa="4.5";
-		else if (gpa.equalsIgnoreCase("c"))
+		else if (grade.equalsIgnoreCase("C"))
 			gpa="4";
-		else if (gpa.equalsIgnoreCase("d"))
+		else if (grade.equalsIgnoreCase("D"))
 			gpa="3.5";
 		else
 			gpa="3";
-		return "forward:/studentGrades/gradesGPA";
+		
+		return gpa;
 		
 	}
 	

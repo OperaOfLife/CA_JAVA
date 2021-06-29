@@ -12,9 +12,10 @@
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
  <link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
 <link rel="stylesheet" type="text/css" media="all" 	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
 
 
-<title th:text="${course.course_name}">Default Title</title>
+<title >Enrolment Details</title>
 </head>
 <body>
 
@@ -48,10 +49,9 @@
 </nav>
 
 
-  </div>
-    
+    <h1 th:text="${course.courseName}"></h1>
 
-<table>
+<table class="center">
 <tr>
 	<th>First Name</th>
 	<th>Middle Name</th>
@@ -60,11 +60,11 @@
 	<th>Enrolment Date</th>
 </tr>
 <tr th:each="enrolment:${enrolments}">
-	<td th:text=${enrolment.firstName}>ID</td>
-	<td th:text=${enrolment.middleName}>ID</td>
-	<td th:text=${enrolment.lastName}>ID</td>
-	<td th:text=${enrolment.email}>ID</td>
-	<td th:text=${enrolment.admission_Date}>ID</td>
+	<td th:text=${enrolment.student.firstName}>ID</td>
+	<td th:text=${enrolment.student.middleName}>ID</td>
+	<td th:text=${enrolment.student.lastName}>ID</td>
+	<td th:text=${enrolment.student.email}>ID</td>
+	<td th:text=${enrolment.enrolmentDate}>ID</td>
 </tr>
 </table>
 

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
  <link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
 <link rel="stylesheet" type="text/css" media="all" 	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
 
 
 <title>View Course Enrolment</title>
@@ -51,7 +52,7 @@
   </div>
     
 
-<table>
+<table class="center">
 <tr>
 	<th>Course Name</th>
 	<th>Course Size</th>
@@ -63,8 +64,9 @@
 	<td th:text=${course.classSize}>Default Size</td>
 	<td th:text=${course.credits}>Default Credits</td>
 	<td th:text=${course.duration}>Default Duration</td>
+	
 	<td><a href="view-courses-enrolment-details.html"
-		th:href="@{/lecturerenrolment/coursedetail/{courseId}(courseId=${course.courseId})}"> More Details </a></td>
+		th:href="@{/lecturerenrolment/coursedetail/}+${course.courseId}"> More Details </a></td>
 </tr>
 </table>
 

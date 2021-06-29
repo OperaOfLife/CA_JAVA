@@ -10,18 +10,18 @@ import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.service.LecturerService;
 
 @Controller
-@RequestMapping("/courseLecturer")
+@RequestMapping("/courselecturer")
 public class LecturerCourseLecturerController
 {
 	
 	@Autowired
 	LecturerService lservice;
 	
-	@RequestMapping("/viewCoursesTaught")
+	@RequestMapping("/home")
 	public String showHome(@ModelAttribute("courses") Course courses, Model model)
 	{
 		//hard-code email address here to test first
-		model.addAttribute("ldata", lservice.listCourseNamesByLecturerEmail("tancherwah@gmail.com"));
+		model.addAttribute("ldata", lservice.listCourseNamesByLecturerEmail("tin@gmail.com"));
 		return "view-courses-taught";
 	}
 }
