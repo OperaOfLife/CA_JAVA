@@ -6,5 +6,5 @@ import sg.edu.iss.caps.domain.Course;
 
 public interface CourseRepository extends JpaRepository<Course, String>
 {
-
+	
 }

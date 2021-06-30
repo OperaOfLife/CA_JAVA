@@ -2,6 +2,9 @@ package sg.edu.iss.caps.service;
 
 import java.util.ArrayList;
 
+import org.springframework.data.domain.Page;
+
+
 import sg.edu.iss.caps.domain.Enrolment;
 import sg.edu.iss.caps.domain.Student;
 
@@ -12,9 +15,8 @@ public interface StudentService {
 
 	public ArrayList<Enrolment>listEnrolmentByStudentId(String studentId);
 	public Student getStudentByEmail(String email);
-
-//=======
+	
 	
 	public ArrayList<Enrolment> listCoursesEnrolledByStudentEmail (String email);
-//>>>>>>> refs/remotes/origin/kat
+
 }
