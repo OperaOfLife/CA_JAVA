@@ -26,7 +26,7 @@ public interface LecturerService {
 	public void saveUpdatedGrades(Enrolment enrolment);
 
 
-	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
+	public List<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
 	
 	//Genesis Student Performace
 	public List<Enrolment> listAll(String keyword);

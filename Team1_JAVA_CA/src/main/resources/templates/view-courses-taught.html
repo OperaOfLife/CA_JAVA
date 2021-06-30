@@ -57,6 +57,7 @@
 			<th>Class Size</th>
 			<th>Start Date</th>
 			<th>Duration(Days)</th>
+			<th>Current Enrolment</th>
 		</tr>
 		
 		<tr th:each="data:${ldata}">
@@ -65,7 +66,10 @@
 			<td><span th:text="${data.courses.description}">Course Description</span></td>
 			<td><span th:text="${data.courses.classSize}">Course Size</span></td>
 			<td><span th:text="${data.courses.courseStartDate}">Course Start Date</span></td>
-			<td><span th:text="${data.courses.duration}">Duration(Days)</span></td>			
+			<td><span th:text="${data.courses.duration}">Duration(Days)</span></td>	
+			
+			<td><span th:text="${count[ldata.indexOf(data)]}">Current Enrolment</span></td>	
+					
 		</tr>
 		
 	</table>

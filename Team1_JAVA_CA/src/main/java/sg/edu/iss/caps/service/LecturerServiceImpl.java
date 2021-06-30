@@ -102,7 +102,7 @@ public class LecturerServiceImpl implements LecturerService {
 	
 	//Select courses taught by a particular lecturer using lectureremail
 	@Transactional
-	public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail) {
+	public List<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail) {
 		return clrepo.listCourseNamesByLecturerEmail(lectureremail);
 	}
 	
