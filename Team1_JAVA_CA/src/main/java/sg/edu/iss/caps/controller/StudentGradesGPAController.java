@@ -1,6 +1,6 @@
 package sg.edu.iss.caps.controller;
 
-import java.security.Principal;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +25,7 @@ import sg.edu.iss.caps.domain.User;
 import sg.edu.iss.caps.repo.EnrolmentRepository;
 import sg.edu.iss.caps.repo.StudentRepository;
 
+
 @Controller
 @RequestMapping("/studentGrades")
 public class StudentGradesGPAController 
@@ -35,20 +36,18 @@ public class StudentGradesGPAController
 	@Autowired
 	StudentRepository srepo;
 
-	 @RequestMapping(value = "/username", method = RequestMethod.GET)
-	 @ResponseBody
-	 public void currentUserName(Model model,Principal principal)
-	 {
-	     String currentuser= principal.getName();
-	     model.addAttribute("currentuser", currentuser);
-	  }
+	
 	 
 	@RequestMapping(value = "/gradesGPA" )
 	public String gradesGPA( Model model, HttpSession session )
 	{
 		List<String> gp=new ArrayList<>();
 		String  grd="";
-		Student student=srepo.findStudentIdByEmail("kat@gmail.com");
+		
+		UserSession usession = (UserSession) session.getAttribute("usession");
+		String currentusername=usession.getUser().getUsername();
+		
+		Student student=srepo.findStudentIdByEmail(currentusername);
 		
 		List<Enrolment> enrolments = (List<Enrolment>) erepo.findEnrolmentByStudentId(student.getStudentId());
 		

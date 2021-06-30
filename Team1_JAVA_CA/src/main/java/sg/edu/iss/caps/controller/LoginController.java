@@ -1,6 +1,6 @@
 package sg.edu.iss.caps.controller;
 
-import java.security.Principal;
+
 import java.util.LinkedHashMap;
 
 import javax.servlet.http.HttpSession;
@@ -19,9 +19,7 @@ import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.domain.RoleType;
 import sg.edu.iss.caps.domain.Student;
 import sg.edu.iss.caps.domain.User;
-import sg.edu.iss.caps.service.LecturerService;
 import sg.edu.iss.caps.service.LoginService;
-import sg.edu.iss.caps.service.StudentService;
 
 @Controller
 @RequestMapping("/login")
@@ -104,12 +102,18 @@ public class LoginController
 	@RequestMapping(path = "/authenticate")
 	public String register(@ModelAttribute("user") User user, Model model, HttpSession session) 
 	{
+		
+		UserSession usession = new UserSession();
 		if(lservice.authenticate(user)) 
 		{
 			User u = lservice.findByName(user.getUsername());
-			session.setAttribute("usession", u);
-			session.setAttribute("userid", user.getUsername());
+			/*
+			 * session.setAttribute("usession", u); session.setAttribute("userid",
+			 * user.getUsername());
+			 */
 			
+			 usession.setUser(u); 
+			 session.setAttribute("usession", usession);
 			
 			if(u.getRole().equals(RoleType.ADMIN)) 
 				  return "home-admin";			  

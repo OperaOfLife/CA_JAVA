@@ -25,15 +25,9 @@
     <div class="collapse navbar-collapse" id="homenavbar1">
       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
       
-      <li class="nav-item">
-        <a class="nav-link" href="../../main/admin" th:href="@{/main/admin}">Admin</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="../../main/student" th:href="@{/main/student}">Student</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link" href="../../main/lecturer" th:href="@{/main/lecturer}">Lecturer</a>
-        </li>
+       <li th:if="${session.usession !=null}" class="nav-item">
+       		<span th:utext="${session.usession.user.username}"></span>
+       </li>
       
          <li class="nav-item">
          <a class="nav-link active" aria-current="page" href="../../main/home" th:href="@{/main/home}">Home</a>
@@ -41,17 +35,16 @@
         <li class="nav-item" th:if="${session.usession ==null}">
          <a class="nav-link active" aria-current="page" href="../../login/register" th:href="@{/login/register}">Register</a>
          </li>
-        
+       
        <li th:if="${session.usession !=null}" class="nav-item">
-        <a class="nav-link" href="../../login/exit" th:href="@{/login/exit}">Logout</a>
+         <a class="nav-link" href="../../login/exit" th:href="@{/login/exit}">Logout</a>
+        
         </li>
         <li th:if="${session.usession ==null}" class="nav-item">
         <a class="nav-link" href="../../login/home" th:href="@{/login/home}">Login</a>
         </li>
         
-        <!-- <li class="nav-item">
-        <a class="nav-link" href="../../login/home" th:href="@{/login/home}">Login</a>
-        </li> -->
+       
                 
       </ul>
       

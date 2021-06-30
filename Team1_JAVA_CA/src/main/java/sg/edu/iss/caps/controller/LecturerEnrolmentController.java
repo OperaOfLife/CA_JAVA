@@ -3,6 +3,8 @@ package sg.edu.iss.caps.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -43,11 +45,13 @@ public class LecturerEnrolmentController
 	}
 
 	@RequestMapping("/gradecourse") 
-	 public String gradeCourse(Model model) 
+	 public String gradeCourse(Model model,HttpSession session) 
 	 { 
 	 
+		UserSession usession = (UserSession) session.getAttribute("usession");
+		String currentusername=usession.getUser().getUsername();
 	  //Find courses associated with lecturerId 
-	  model.addAttribute("courses",lservice.listCourseNamesByLecturerEmail("tin@gmail.com")); 
+	  model.addAttribute("courses",lservice.listCourseNamesByLecturerEmail(currentusername)); 
 	  return "grade-course"; 
 	 }
 	//Display enrolments by course id 2/4
