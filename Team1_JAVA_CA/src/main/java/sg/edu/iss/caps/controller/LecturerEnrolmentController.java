@@ -2,6 +2,7 @@ package sg.edu.iss.caps.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 
@@ -71,28 +72,39 @@ public class LecturerEnrolmentController
 	}
 
 	//Update grades
-	@RequestMapping("/updateGrades/{enrolmentid}")
-	public String updateGrades(@PathVariable("enrolmentid") int id,Enrolment enrolment, BindingResult result, Model model) {
-		if(result.hasErrors()) {
-			enrolment.setEnrolmentId(id);
-			return "grade-course-3";
-		}
-		
-		lservice.saveUpdatedGrades(enrolment);
-		return "forward:/editGrades/{enrolmentid}";
-	}
-
 	/*
-	 * <<<<<<< HEAD
+	 * @RequestMapping("/updateGrades/{enrolmentid}") public String
+	 * updateGrades(@PathVariable("enrolmentid") int id,Enrolment enrolment,
+	 * BindingResult result, Model model) { if(result.hasErrors()) {
+	 * enrolment.setEnrolmentId(id); return "grade-course-3"; }
 	 * 
-	 * @RequestMapping("/performance") public String performance(Model
-	 * model, @Param("keyword") String keyword) { List<Enrolment> listEnrolments =
-	 * lservice.listAll(keyword); model.addAttribute("listenrolments",
-	 * listEnrolments); model.addAttribute("keyword", keyword); return
-	 * "view-student-performance"; }
-	 * 
-	 * =======
+	 * lservice.saveUpdatedGrades(enrolment); return
+	 * "forward:/editGrades/{enrolmentid}"; }
 	 */
+	 @RequestMapping("/updateGrades/{enrolmentid}") 
+	 public String updateGrades(@PathVariable("enrolmentid") int id, @ModelAttribute("enrolment") Enrolment enrolment, BindingResult result, Model model) { 
+	  if(result.hasErrors()) { 
+	   return "grade-course-3"; 
+	  } 
+	   
+	  Optional<Enrolment> enrolled = lservice.findByEnrolmentId(id); 
+	  if(enrolled.isPresent()) 
+	  { 
+	   Enrolment e = enrolled.get(); 
+	   if(enrolment.getEnrolmentDate() != null) 
+	    e.setEnrolmentDate(enrolment.getEnrolmentDate()); 
+	   if(enrolment.getGrade() != null) 
+	    e.setGrade(enrolment.getGrade()); 
+	   
+	   if(enrolment.getStatus() != null) 
+	    e.setStatus(enrolment.getStatus()); 
+	   
+	   lservice.saveUpdatedGrades(e); 
+	  } 
+	  return "forward:/lecturerenrolment/gradecourse"; 
+	 }
+	
+	
 	@RequestMapping("/performance")
 	public String performance(Model model, @Param("keyword") String keyword){
 		List<Enrolment> listEnrolments = lservice.listAll(keyword);

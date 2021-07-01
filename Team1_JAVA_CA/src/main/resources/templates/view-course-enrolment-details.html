@@ -58,6 +58,7 @@
 	<th>Last Name</th>
 	<th>Email</th>
 	<th>Enrolment Date</th>
+	<th>Status</th>
 </tr>
 <tr th:each="enrolment:${enrolments}">
 	<td th:text=${enrolment.student.firstName}>ID</td>
@@ -65,6 +66,8 @@
 	<td th:text=${enrolment.student.lastName}>ID</td>
 	<td th:text=${enrolment.student.email}>ID</td>
 	<td th:text=${enrolment.enrolmentDate}>ID</td>
+	<td th:text=${enrolment.status}>Status</td>
+	
 </tr>
 </table>
 

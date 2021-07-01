@@ -52,25 +52,26 @@
 
 <!-- <h1 th:text="${enrolment.courses.course_name}">Default Title</h1> --> 
   
- <form action="#" 
-  		th:action="@{/lecturerenrolment/updateGrades/{id}(id=${enrolment.enrolmentId})}" 
-  		th:object="${enrolment}" method="post"> 
+<form action="#"  
+    th:action="@{/lecturerenrolment/updateGrades/} +${enrolment.enrolmentId}"  
+    th:object="${enrolment}" method="post">
    <table>
    <tr>
    <td>
    Course Name</td>
    <td>
    <fieldset>  
-   <input type="text" th:field="${enrolment.course.courseName}" id="cname" placeholder="Course Name"> 
+   <span th:text="${enrolment.course.courseName}" id="cname" placeholder="Course Name"> </span>
     </fieldset>
     </td>
+   
     </tr>
     <tr>
    <td>
    Student Name</td>
    <td>
    <fieldset>  
-   <input type="text" th:field="${enrolment.student.firstName}" id="cname" placeholder="Course Name"> 
+   <span th:text="${enrolment.student.firstName}" id="cname" placeholder="Course Name"></span> 
     </fieldset>
     </td>
     </tr>
@@ -85,7 +86,7 @@
     </tr>
     </table>
    
-   <input type="submit" value="Update Credits">  
+   <input type="submit" value="Update Grade">  
  </form>
 
 

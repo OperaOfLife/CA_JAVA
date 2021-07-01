@@ -4,6 +4,7 @@ package sg.edu.iss.caps.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,6 +40,13 @@ public class LecturerServiceImpl implements LecturerService {
 	{
 		return lrepo.findLecturerIdbyEmail(email);
 	}
+	
+	//Gen addded for grade a course 
+		 @Transactional 
+		 public Optional<Enrolment> findByEnrolmentId(int id)
+		 { 
+		  return erepo.findById(id);
+		 }
 	
 	//Genesis Student Performance  
 	 @Transactional  

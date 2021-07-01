@@ -36,10 +36,10 @@
         <a class="nav-link " aria-current="page" href="../../adminlecturer/list" th:href="@{/adminlecturer/list}">Manage Lecturers</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" aria-current="page" href="../../admincourse/list" th:href="@{/admincourse/list}">Manage Courses</a>
+        <a class="nav-link" aria-current="page" href="../../admincourse/list" th:href="@{/admincourse/list}">Manage Courses</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link " aria-current="page" href="../../enrolment/adminlist" th:href="@{/adminenrolment/list}">Manage Enrolments</a>
+        <a class="nav-link  active" aria-current="page" href="../../adminenrolment/list" th:href="@{/adminenrolment/list}">Manage Enrolments</a>
         </li>
         
                 
@@ -49,25 +49,27 @@
   </div>
 </nav>
 
-	 	<table class="center" th:if="${not #lists.isEmpty(enrollments)}">
+	 	<table class="center" th:if="${not #lists.isEmpty(enrolments)}">
 		<tr>
 			<th>Enrolment Id</th>
 			<th>Course Code</th>
+			<th>Student ID</th>
 			<th>Student Grade</th>
 			<th>Enrollment Date</th>
 			<th>Status</th>
 			<th>Edit</th>
 			<th>Delete</th>
 		</tr>
-		<tr th:each="Enrollment:${enrollments}">
+		<tr th:each="Enrollment:${enrolments}">
 			<td th:text="${Enrollment.enrolmentId}">Id</td>
 			<td th:text="${Enrollment.course.courseId}">Course Id</td>
+			<td th:text="${Enrollment.student.studentId}">Student Id</td>
 			<td th:text="${Enrollment.grade}">Student Grade</td>
 			<td th:text="${#dates.format(Enrollment.enrolmentDate, 'dd-MM-yyyy')}">Enrollment Date</td>
 			<td th:text="${Enrollment.status}">Status</td>
-			<td><a href="addenrollment.html"
+			<td><a 
 				th:href="@{/adminenrolment/editerm/}+${Enrollment.enrolmentId}">Edit</a></td>
-			<td><a href="deleteenrollment.html"
+			<td><a 
 				th:href="@{/adminenrolment/deleteerm/}+${Enrollment.enrolmentId}">Delete</a></td>
 		</tr>
 	<tr>

@@ -34,12 +34,27 @@ public class LecturerCourseLecturerController
 		model.addAttribute("ldata", course);
 		ArrayList<Integer>  count=new ArrayList<>();
 		
-		for(CourseLecturer cl:course)
-		{
-			List<Enrolment>  enrol =cl.getCourses().getEnrolment();
 		
-			count.add(enrol.size());
-		}
+		for(CourseLecturer cl:course) 
+		  { 
+		   List<Enrolment>  enrol = cl.getCourses().getEnrolment(); 
+		   //should i loop through each course to get enrolment separately instead? 
+		    
+		   for (Enrolment e:enrol) 
+		   { 
+		     
+		    if (e.getStatus().ordinal() == 0) 
+		     count.add(enrol.size()); 
+		   } 
+		  }
+		
+		/*
+		 * for(CourseLecturer cl:course) { List<Enrolment> enrol
+		 * =cl.getCourses().getEnrolment();
+		 * 
+		 * count.add(enrol.size()); }
+		 */
+		
 		
 		model.addAttribute("count",count);
 		
