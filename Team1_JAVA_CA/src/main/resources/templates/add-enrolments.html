@@ -69,7 +69,7 @@
 		<fieldset>
 			 <select th:field="*{course}">
 				<option th:each="course:${courses}" th:value="${course.courseId}"
-					th:text="${course.courseId}"></option>
+					th:text="${course.courseId}">CS101</option>
 			</select>
 		</fieldset>
 		</td>
@@ -80,7 +80,7 @@
 		<fieldset>
 			 <select th:field="*{student}">
 				<option th:each="student:${students}" th:value="${student.studentId}"
-					th:text="${student.studentId}"></option>
+					th:text="${student.studentId}">S101</option>
 			</select>
 		</fieldset>
 		</td>

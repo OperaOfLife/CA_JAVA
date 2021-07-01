@@ -2,6 +2,7 @@ package sg.edu.iss.caps.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.CourseLecturer;
@@ -18,7 +19,8 @@ public interface LecturerService {
 	public String findLecturerIdbyEmail(String string);
 	public Object findCourseNamesByLecturerId(int lecturerId);
 
-	
+	 //Gen add for grade a course 
+	 public Optional<Enrolment> findByEnrolmentId(int id);
 
 	public ArrayList<Course> findCoursesByLecturerId(String id);
 	public ArrayList<Enrolment>listEnrolmentByCourseId(String id);

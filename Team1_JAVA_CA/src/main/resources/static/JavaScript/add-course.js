@@ -5,13 +5,15 @@ window.onload = function () {
     
     let form = document.getElementById("form");
 
-    // form.document.getElementById("uname").focus;
+   
 
-    form.onsubmit = function () {
+    form.onsubmit = function ()
+     {
 
          let letters = /^[a-zA-Z]+$/;
 		let alpha=/^[a-zA-Z0-9]+$/;
 		let numbers=/^[0-9]+$/;
+		let coursename=/^[0-9@$%!*:?]+$/;
         
         let id = document.getElementById("id_no").value.trim();
         let name = document.getElementById("name").value.trim();
@@ -20,6 +22,7 @@ window.onload = function () {
 		let credits = document.getElementById("credits").value.trim();
         let duration = document.getElementById("duration").value.trim();
        
+
 
 
         if (id.length === 0 ||name.length === 0 || desc.length === 0 ||size.length === 0 || credits.length === 0 || duration.length === 0 )
@@ -37,7 +40,7 @@ window.onload = function () {
             //alert("Please enter only letters  for First Name.");
             return false;
         }
-        else if (!name.match(letters))
+        else if (name.match(coursename))
         {
             error_elem.innerHTML = "<span style='font-size:30px'>Please enter only letters  for  Name.</span>";
 

@@ -31,10 +31,7 @@ public class AdminEnrolmentController
   @Autowired
   StudentRepository srepo;
 	
-	/*
-	 * @RequestMapping("/list") public String showHome(@ModelAttribute("enrolment")
-	 * Enrolment enrolment,Model model) { return "manage-enrolments"; }
-	 */
+	
 	
 	@Autowired
 	public void setAdminService(AdminServiceImpl asi) {
@@ -51,6 +48,7 @@ public class AdminEnrolmentController
 	    model.addAttribute("students", students);
 	    return "add-enrolments";
 	  }
+	
 	@RequestMapping(value = "/saveerm")
 	  public String savelist(@ModelAttribute("addenrollment") Enrolment addenrollment, 
 	      BindingResult bindingResult,  Model model) {
@@ -68,33 +66,27 @@ public class AdminEnrolmentController
 	
 	@RequestMapping(value = "/list")
 	public String listall(Model model) {
-		model.addAttribute("enrollments", as.findAllEnrollment());
+		model.addAttribute("enrolments", as.findAllEnrollment());
 		return "manage-enrolments";
 	}
-	/*
-	 * @RequestMapping(value = "/adderm") public String addlist(Model model) {
-	 * Enrolment e1 = new Enrolment(); model.addAttribute("addenrollment", e1);
-	 * //key - "enrollment" return "add-enrolments"; }
-	 */
+	
 	
 	@RequestMapping(value = "/editerm/{id}")
-	public String editlist(@PathVariable("id") int id, Model model) {
+	public String editlist(@PathVariable("id") int id, Model model) 
+	{
+		ArrayList<Course> courses = (ArrayList<Course>) crepo.findAll();
+	    ArrayList<Student> students = (ArrayList<Student>) srepo.findAll();
+	    model.addAttribute("courses", courses);
+	    model.addAttribute("students", students);
 		model.addAttribute("addenrollment", as.findEnrollmentById(id));
 		return "add-enrolments";
 	}
 
-	/*
-	 * @RequestMapping(value = "/saveerm") public String
-	 * savelist(@ModelAttribute("addenrollment") Enrolment addenrollment,
-	 * BindingResult bindingResult, Model model) { if (bindingResult.hasErrors()) {
-	 * return "add-enrolments"; } as.saveEnrollment(addenrollment); return
-	 * "forward:/enrolment/list"; }
-	 */
 	
 	@RequestMapping(value = "/deleteerm/{id}")
 	public String deletefacility(@PathVariable("id") Integer id) {
 		as.deletefacility(as.findEnrollmentById(id));
-		return "forward:/enrolment/list";
+		return "forward:/adminenrolment/list";
 	}
 	
 
