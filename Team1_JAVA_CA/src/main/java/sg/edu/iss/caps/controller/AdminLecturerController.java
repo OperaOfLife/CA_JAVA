@@ -22,15 +22,7 @@ public class AdminLecturerController
 	@Autowired
     LecturerRepository lrepo;
 	
-		
-	/*
-	 * @RequestMapping("/create") public String
-	 * createStudent(@ModelAttribute("student") Student student,Model model) {
-	 * return "add-lecturers"; }
-	 */
-		
-
-	    
+	
 	      
 	      @RequestMapping("/list")
 	      public String listLecturers(Model model) {

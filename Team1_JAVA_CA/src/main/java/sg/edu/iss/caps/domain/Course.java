@@ -20,8 +20,9 @@ public class Course
 	private int credits;
 	private int duration;
 	
-	@DateTimeFormat(pattern="dd-MM-yyyy")
-	private LocalDate courseStartDate;
+	/*
+	 * @DateTimeFormat(pattern="dd-MM-yyyy") private LocalDate courseStartDate;
+	 */
 	
 	@OneToMany(mappedBy="courses")
 	private List<CourseLecturer> Courselecturer;
@@ -37,7 +38,7 @@ public class Course
 
 
 	public Course(String courseId, String courseName, String description, int classSize, int credits, int duration,
-			LocalDate courseStartDate, List<CourseLecturer> courselecturer, List<Enrolment> enrolment) {
+			 List<CourseLecturer> courselecturer, List<Enrolment> enrolment) {
 		super();
 		this.courseId = courseId;
 		this.courseName = courseName;
@@ -45,7 +46,7 @@ public class Course
 		this.classSize = classSize;
 		this.credits = credits;
 		this.duration = duration;
-		this.courseStartDate = courseStartDate;
+		
 		Courselecturer = courselecturer;
 		this.enrolment = enrolment;
 	}
@@ -62,8 +63,7 @@ public class Course
 		this.classSize = classSize;
 		this.credits = credits;
 		this.duration = duration;
-		this.courseStartDate = courseStartDate;
-	}
+		}
 
 
 
@@ -152,16 +152,7 @@ public class Course
 
 
 
-	public LocalDate getCourseStartDate() {
-		return courseStartDate;
-	}
-
-
-
-
-	public void setCourseStartDate(LocalDate courseStartDate) {
-		this.courseStartDate = courseStartDate;
-	}
+	
 
 
 
@@ -194,12 +185,7 @@ public class Course
 
 
 
-	@Override
-	public String toString() {
-		return "Course [courseId=" + courseId + ", courseName=" + courseName + ", description=" + description
-				+ ", classSize=" + classSize + ", credits=" + credits + ", duration=" + duration + ", courseStartDate="
-				+ courseStartDate + ", Courselecturer=" + Courselecturer + ", enrolment=" + enrolment + "]";
-	}
+	
 
 
 

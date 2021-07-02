@@ -105,14 +105,7 @@ public class StudentEnrolmentController
 	    }
 	  }
 
-		/*
-		 * @RequestMapping("/coursesForEnrolment") public String
-		 * showCoursesForEnrolment(@ModelAttribute("courses") Course courses,Model
-		 * model) { return "view-courses"; }
-		 */
-	
-	//filter by email and list down courses that a particular student is enrolled in
-	//hard-coded email address in to test the code first
+		
 	@RequestMapping("/enrolledCourses")
 	public String showEnrolledCourses(@ModelAttribute("courses") Course courses,Model model,
 						HttpSession session)

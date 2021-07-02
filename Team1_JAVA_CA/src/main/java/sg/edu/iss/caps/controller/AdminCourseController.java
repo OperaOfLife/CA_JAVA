@@ -22,10 +22,6 @@ public class AdminCourseController
 	@Autowired
 	CourseRepository crepo;
 	
-	/*
-	 * @RequestMapping("/list") public String showHome(@ModelAttribute("courses")
-	 * Course courses,Model model) { return "manage-courses"; }
-	 */
 	
 	@RequestMapping("/add")
 	public String showCourseForm(Model model)

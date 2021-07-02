@@ -53,9 +53,6 @@ public class CourseLecturer
 		this.lecturer = lecturer;
 	}
 	
-	@Override
-	public String toString() {
-		return "CourseLecturer [id=" + id + ", courses=" + courses + ", lecturer=" + lecturer + "]";
-	}
+	
 	
 }
