@@ -44,35 +44,32 @@ public class LecturerCourseLecturerController
 	  }
 	
 		
-	/*
-	 * @RequestMapping(value ="/add") public String addCourses(Model model) { //add
-	 * new course form model.addAttribute("addcourse", new CourseLecturer());
-	 * //extract names from DB ArrayList<String> clist =
-	 * lservice.findAllCourseName(); ArrayList<String> llist =
-	 * lservice.findAllLecturerNames(); model.addAttribute("cnames", clist);
-	 * model.addAttribute("lnames", llist); //direct to html return
-	 * "add-course-lecturer-form"; }
-	 */
-	  
-	 @RequestMapping(value = "/save") 
-	 public String saveCourseTaught (@ModelAttribute("addcourse")  CourseLecturer courselecturer,BindingResult bindingResult, Model model) { 
-	  if(bindingResult.hasErrors()) { 
-	   return "addcourseform"; 
+	@RequestMapping(value = "/save") 
+	 public String saveCourseTaught(@ModelAttribute("addcourse") CourseLecturer courselecturer, 
+	   BindingResult bindingResult, Model model) { 
+	  if (bindingResult.hasErrors()) { 
+	   return "add-course-lecturer-form"; 
 	  } 
-	  //Lecturer Id 
-	  Lecturer lecturer = lservice.findLecturerByName(courselecturer.getLecturer().getFirstName()); 
-	  lecturer = lservice.findLecturerById(lecturer.getLecturerId()); 
-	  courselecturer.setLecturer(lecturer); 
-	  //Course Id 
-	  Course course = lservice.findCourseByName(courselecturer.getCourses().getCourseName()); 
-	  course = lservice.findCourseById(course.getCourseId()); 
-	  courselecturer.setCourses(course); 
-	  
-	  lservice.addCousesTaught(courselecturer); 
-	  //} 
-	  return "forward:/courselecturer/add"; 
+	  if (lservice.findCourseByCourseAndLecturerId(courselecturer.getLecturer().getLecturerId(), 
+	    courselecturer.getCourses().getCourseId()) != null) 
+	   return "add-course-lecturer-form"; 
+	  else { 
+	 
+	   // Lecturer Id 
+	   Lecturer lecturer = lservice.findLecturerByName(courselecturer.getLecturer().getFirstName()); 
+	   lecturer = lservice.findLecturerById(lecturer.getLecturerId()); 
+	   courselecturer.setLecturer(lecturer); 
+	   // Course Id 
+	   Course course = lservice.findCourseByName(courselecturer.getCourses().getCourseName()); 
+	   course = lservice.findCourseById(course.getCourseId()); 
+	   courselecturer.setCourses(course); 
+	 
+	   lservice.addCousesTaught(courselecturer); 
+	 
+	   return "forward:/courselecturer/add"; 
+	  } 
 	 }
-	
+	  
 	
 	@RequestMapping("/home")
 	public String showHome(@ModelAttribute("courses") Course courses, Model model, HttpSession session)
