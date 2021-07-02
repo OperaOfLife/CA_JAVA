@@ -38,7 +38,8 @@ public class LecturerEnrolmentController
 	
 	//Display Selected Course and its enrolment 2/2
 	@RequestMapping("/coursedetail/{courseId}")
-	public String enrolmentDetails(@PathVariable("courseId") String courseId, Model model) {
+	public String enrolmentDetails(@PathVariable("courseId") String courseId, Model model)
+	{
 		model.addAttribute("course", lservice.findCourseById(courseId));
 
 		model.addAttribute("enrolments", lservice.listEnrolmentByCourseId(courseId));

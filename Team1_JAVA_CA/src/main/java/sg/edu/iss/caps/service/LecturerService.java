@@ -29,7 +29,7 @@ public interface LecturerService {
 	public void saveUpdatedGrades(Enrolment enrolment);
 	public Lecturer findLecturerById(String id);
 	public Course findCourseByName(String name);
-
+	public String findLecturerNamebyEmail(String email);
 	public List<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
 	
 	//Genesis Student Performace

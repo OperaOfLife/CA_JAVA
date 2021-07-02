@@ -30,4 +30,6 @@ public interface LecturerRepository extends JpaRepository<Lecturer, String>
 	 @Query("SELECT l from Lecturer l where l.firstName LIKE :name") 
 	 List<Lecturer> findLecturerByFirstName(@Param("name")String name);
 
+	  @Query("SELECT l.firstName FROM Lecturer l WHere l.email LIKE :email") 
+	  public String findLecturerNameByEmail(@Param("email") String email);
 }
