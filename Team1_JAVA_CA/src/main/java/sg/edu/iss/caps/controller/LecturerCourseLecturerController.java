@@ -26,7 +26,7 @@ public class LecturerCourseLecturerController
 	
 	@Autowired
 	LecturerService lservice;
-	@Autowired
+	
 	
 	
 	
