@@ -27,20 +27,32 @@ public class LecturerCourseLecturerController
 	@Autowired
 	LecturerService lservice;
 	
+	@RequestMapping(value ="/add")  
+	  public String addCourses(Model model,HttpSession session) 
+	 {  
+	   //add new course form  
+	   model.addAttribute("addcourse", new CourseLecturer());  
+	   //extract names from DB  
+	   ArrayList<String> clist = lservice.findAllCourseName();  
+	   //ArrayList<String> llist = lservice.findAllLecturerNames();  
+	   UserSession usession = (UserSession) session.getAttribute("usession"); 
+	   String currentusername=usession.getUser().getUsername(); 
+	   model.addAttribute("cnames", clist);  
+	   model.addAttribute("lname", lservice.findLecturerNamebyEmail(currentusername));  
+	   //direct to html  
+	   return "add-course-lecturer-form";  
+	  }
+	
 		
-	@RequestMapping(value ="/add") 
-	 public String addCourses(Model model)
-	{ 
-	  //add new course form 
-	  model.addAttribute("addcourse", new CourseLecturer()); 
-	  //extract names from DB 
-	  ArrayList<String> clist = lservice.findAllCourseName(); 
-	  ArrayList<String> llist = lservice.findAllLecturerNames(); 
-	  model.addAttribute("cnames", clist); 
-	  model.addAttribute("lnames", llist); 
-	  //direct to html 
-	  return "add-course-lecturer-form"; 
-	 } 
+	/*
+	 * @RequestMapping(value ="/add") public String addCourses(Model model) { //add
+	 * new course form model.addAttribute("addcourse", new CourseLecturer());
+	 * //extract names from DB ArrayList<String> clist =
+	 * lservice.findAllCourseName(); ArrayList<String> llist =
+	 * lservice.findAllLecturerNames(); model.addAttribute("cnames", clist);
+	 * model.addAttribute("lnames", llist); //direct to html return
+	 * "add-course-lecturer-form"; }
+	 */
 	  
 	 @RequestMapping(value = "/save") 
 	 public String saveCourseTaught (@ModelAttribute("addcourse")  CourseLecturer courselecturer,BindingResult bindingResult, Model model) { 
@@ -58,7 +70,7 @@ public class LecturerCourseLecturerController
 	  
 	  lservice.addCousesTaught(courselecturer); 
 	  //} 
-	  return "forward:/lecturerenrolment/add"; 
+	  return "forward:/courselecturer/add"; 
 	 }
 	
 	

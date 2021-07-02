@@ -52,12 +52,12 @@
  <h1>Add Courses</h1> 
  <form action="#" th:object="${addcourse}" th:action="@{/courselecturer/save}"method="post">  
    
-   <fieldset> 
-     Lecturer Name <select th:field="*{lecturer.firstName}"> 
-       <option th:each="lname:${lnames}" th:value="${lname}" 
-         th:text="${lname}"></option> 
+  <fieldset>  
+     Lecturer Name <Select th:field= "*{lecturer.firstName}" >  
+      <option th:value="${lname}" th:text="${lname}"></option> 
      </select> 
-   </fieldset> 
+      
+   </fieldset>
    <fieldset> 
      Course Name <select th:field="*{courses.courseName}" > 
        <option th:each="cname:${cnames}" th:value="${cname}" 
