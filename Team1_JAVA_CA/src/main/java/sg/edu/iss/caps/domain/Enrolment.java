@@ -1,7 +1,7 @@
 package sg.edu.iss.caps.domain;
 
 
-import java.time.LocalDate;
+
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -20,6 +20,7 @@ public class Enrolment
 	private int enrolmentId;
 	@DateTimeFormat (pattern="dd-MM-yyyy")
 	private Date enrolmentDate;
+	
 	private String grade;
 	private EnrolmentStatus status;
 	@ManyToOne

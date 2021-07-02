@@ -54,10 +54,18 @@ public class StudentGradesGPAController
 		  for(Enrolment e: enrolments)
 		  {
 			  grd=e.getGrade(); 
-			  gp.add(calculate(grd));
+			  if(grd!=null)
+			  {
+				  gp.add(calculate(grd));
+				  model.addAttribute("gpa", gp) ;
+			  }
+			  else
+			  {
+				  model.addAttribute("gpa", "NA") ;
+			  }
 		  
 		  }
-		  model.addAttribute("gpa", gp) ;
+		 
 		 
 		model.addAttribute("enrolments",enrolments);
 		return "grades-gpa";
