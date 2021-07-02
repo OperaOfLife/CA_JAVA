@@ -37,6 +37,12 @@ public class LecturerServiceImpl implements LecturerService {
 	@Autowired
 	EnrolmentRepository erepo;
 	
+	
+	@Transactional 
+	 public CourseLecturer findCourseByCourseAndLecturerId(String lecturerid, String courseid) { 
+	  return clrepo.findCourseByCourseAndLecturerId(lecturerid, courseid); 
+	 }
+	
 	@Transactional 
 	 public String findLecturerNamebyEmail(String email) { 
 	  return lrepo.findLecturerNameByEmail(email); 
