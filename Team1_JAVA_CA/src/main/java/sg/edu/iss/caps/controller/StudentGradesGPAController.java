@@ -72,16 +72,7 @@ public class StudentGradesGPAController
 	}
 	
 	
-	/*
-	 * @RequestMapping("/gpa/{grade}") public String
-	 * calculate(@PathVariable("grade") String grade,Model model) { String gpa="NA";
-	 * if (grade.equalsIgnoreCase("A")) gpa="5"; else if
-	 * (grade.equalsIgnoreCase("B")) gpa="4.5"; else if
-	 * (grade.equalsIgnoreCase("C")) gpa="4"; else if (grade.equalsIgnoreCase("D"))
-	 * gpa="3.5"; else gpa="3"; //model.addAttribute("gpa",gpa); return gpa;
-	 * 
-	 * }
-	 */
+	
 	 
 	
 	

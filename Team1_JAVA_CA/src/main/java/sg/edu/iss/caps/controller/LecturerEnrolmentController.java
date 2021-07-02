@@ -44,6 +44,8 @@ public class LecturerEnrolmentController
 		model.addAttribute("enrolments", lservice.listEnrolmentByCourseId(courseId));
 		return "view-course-enrolment-details";
 	}
+	
+	
 
 	@RequestMapping("/gradecourse") 
 	 public String gradeCourse(Model model,HttpSession session) 
@@ -55,32 +57,31 @@ public class LecturerEnrolmentController
 	  model.addAttribute("courses",lservice.listCourseNamesByLecturerEmail(currentusername)); 
 	  return "grade-course"; 
 	 }
+	
+	
+	
+	
+	
 	//Display enrolments by course id 2/4
 	@RequestMapping("/getEnrolments/{courseId}")
-	public String getEnrolmentsByCourseId(@PathVariable("courseId") String courseId, Model model) {
+	public String getEnrolmentsByCourseId(@PathVariable("courseId") String courseId, Model model)
+	{
 		model.addAttribute("enrolments", lservice.listEnrolmentByCourseId(courseId));
 		return "grade-course-2";
 	}
 	
+	
+	
 	//Display students by enrolment id 3/4
 	@RequestMapping("/editGrades/{enrolmentid}")
-	public String showUpdateGrades(@PathVariable("enrolmentid") int id, Model model) {
-		//Enrolment enrolment = lservice.listEnrolmentByEnrolmentId(id);
+	public String showUpdateGrades(@PathVariable("enrolmentid") int id, Model model)
+	{
 		
 		model.addAttribute("enrolment", lservice.listEnrolmentByEnrolmentId(id));
 		return "grade-course-3";
 	}
 
-	//Update grades
-	/*
-	 * @RequestMapping("/updateGrades/{enrolmentid}") public String
-	 * updateGrades(@PathVariable("enrolmentid") int id,Enrolment enrolment,
-	 * BindingResult result, Model model) { if(result.hasErrors()) {
-	 * enrolment.setEnrolmentId(id); return "grade-course-3"; }
-	 * 
-	 * lservice.saveUpdatedGrades(enrolment); return
-	 * "forward:/editGrades/{enrolmentid}"; }
-	 */
+	
 	 @RequestMapping("/updateGrades/{enrolmentid}") 
 	 public String updateGrades(@PathVariable("enrolmentid") int id, @ModelAttribute("enrolment") Enrolment enrolment, BindingResult result, Model model) { 
 	  if(result.hasErrors()) { 

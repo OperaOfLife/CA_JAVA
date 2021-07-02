@@ -94,7 +94,6 @@ public class HomeController
 		
 		Page<Course> page = hs.findPaginated(pageNo, pageSize, sortField, sortDir);
 		List<Course> listcourses = page.getContent();
-		//List<Course> allcourses = crepo.findAll();
 		model.addAttribute("currentPage", pageNo);
 		model.addAttribute("totalPages", page.getTotalPages());
 		model.addAttribute("totalItems", page.getTotalElements());

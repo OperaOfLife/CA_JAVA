@@ -103,10 +103,6 @@ public class LoginController
 		if(lservice.authenticate(user)) 
 		{
 			User u = lservice.findByName(user.getUsername());
-			/*
-			 * session.setAttribute("usession", u); session.setAttribute("userid",
-			 * user.getUsername());
-			 */
 			
 			 usession.setUser(u); 
 			 session.setAttribute("usession", usession);

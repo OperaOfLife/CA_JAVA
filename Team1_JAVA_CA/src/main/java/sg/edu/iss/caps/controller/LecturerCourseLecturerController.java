@@ -27,10 +27,7 @@ public class LecturerCourseLecturerController
 	@Autowired
 	LecturerService lservice;
 	
-	
-	
-	
-	
+		
 	@RequestMapping(value ="/add") 
 	 public String addCourses(Model model)
 	{ 
@@ -74,33 +71,18 @@ public class LecturerCourseLecturerController
 		model.addAttribute("ldata", course);
 		ArrayList<Integer>  count=new ArrayList<>();
 		
-		/*
-		 * for(CourseLecturer cl:course) { List<Enrolment> enrol =
-		 * cl.getCourses().getEnrolment(); //should i loop through each course to get
-		 * enrolment separately instead?
-		 * 
-		 * for (Enrolment e:enrol) {
-		 * 
-		 * if (e.getStatus().ordinal() == 0) count.add(enrol.size()); } }
-		 */
 		
-		  for(CourseLecturer cl:course) {
-		  
-		  List<Enrolment> enrol =cl.getCourses().getEnrolment();
-		  
-		  count.add(enrol.size() ); }
-		 
 		
 		/*
-		 * int total=0; for(CourseLecturer cl:course) {
+		 * for(CourseLecturer cl:course) {
 		 * 
 		 * List<Enrolment> enrol =cl.getCourses().getEnrolment();
 		 * 
-		 * for(Enrolment e:enrol) {
-		 * 
-		 * if(EnrolmentStatus.DEFERRED != e.getStatus()) total=total+1; }
-		 * count.add(total ); }
+		 * count.add(enrol.size() ); }
 		 */
+		 
+		
+		
 		  for(CourseLecturer cl:course)
 		    {
 		      List<Enrolment>  enrol =cl.getCourses().getEnrolment();
