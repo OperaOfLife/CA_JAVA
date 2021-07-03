@@ -44,16 +44,38 @@ public class LecturerCourseLecturerController
 	  }
 	
 		
+		/*
+		 * @RequestMapping(value = "/save") public String
+		 * saveCourseTaught(@ModelAttribute("addcourse") CourseLecturer courselecturer,
+		 * BindingResult bindingResult, Model model) { if (bindingResult.hasErrors()) {
+		 * return "add-course-lecturer-form"; } if
+		 * (lservice.findCourseByCourseAndLecturerId(courselecturer.getLecturer().
+		 * getLecturerId(), courselecturer.getCourses().getCourseId()) != null) return
+		 * "add-course-lecturer-form"; else {
+		 * 
+		 * // Lecturer Id Lecturer lecturer =
+		 * lservice.findLecturerByName(courselecturer.getLecturer().getFirstName());
+		 * lecturer = lservice.findLecturerById(lecturer.getLecturerId());
+		 * courselecturer.setLecturer(lecturer); // Course Id Course course =
+		 * lservice.findCourseByName(courselecturer.getCourses().getCourseName());
+		 * course = lservice.findCourseById(course.getCourseId());
+		 * courselecturer.setCourses(course);
+		 * 
+		 * lservice.addCousesTaught(courselecturer);
+		 * 
+		 * return "forward:/courselecturer/add"; } }
+		 */
+	
+	
 	@RequestMapping(value = "/save") 
 	 public String saveCourseTaught(@ModelAttribute("addcourse") CourseLecturer courselecturer, 
 	   BindingResult bindingResult, Model model) { 
-	  if (bindingResult.hasErrors()) { 
+	  if (bindingResult.hasErrors()) 
+	  { 
 	   return "add-course-lecturer-form"; 
 	  } 
-	  if (lservice.findCourseByCourseAndLecturerId(courselecturer.getLecturer().getLecturerId(), 
-	    courselecturer.getCourses().getCourseId()) != null) 
-	   return "add-course-lecturer-form"; 
-	  else { 
+	  if (lservice.findCourseByCourseAndLecturerId(courselecturer.getLecturer().getLecturerId(), courselecturer.getCourses().getCourseId()) == null) 
+	    { 
 	 
 	   // Lecturer Id 
 	   Lecturer lecturer = lservice.findLecturerByName(courselecturer.getLecturer().getFirstName()); 
@@ -68,6 +90,10 @@ public class LecturerCourseLecturerController
 	 
 	   return "forward:/courselecturer/add"; 
 	  } 
+	  else
+	  {
+		  return "home-lecturer";
+	  }
 	 }
 	  
 	

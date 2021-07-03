@@ -38,8 +38,15 @@ public class LecturerServiceImpl implements LecturerService {
 	EnrolmentRepository erepo;
 	
 	
+	/*
+	 * @Transactional public CourseLecturer findCourseByCourseAndLecturerId(String
+	 * lecturerid, String courseid) { return
+	 * clrepo.findCourseByCourseAndLecturerId(lecturerid, courseid); }
+	 */
+	
 	@Transactional 
-	 public CourseLecturer findCourseByCourseAndLecturerId(String lecturerid, String courseid) { 
+	 public CourseLecturer findCourseByCourseAndLecturerId(String lecturerid, String courseid)
+	{ 
 	  return clrepo.findCourseByCourseAndLecturerId(lecturerid, courseid); 
 	 }
 	

@@ -16,6 +16,7 @@
 
 
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
 
 
 <title>HOME LECTURER</title>
@@ -49,26 +50,39 @@
   </div>
 </nav>
 
- <h1>Add Courses</h1> 
+ 
  <form action="#" th:object="${addcourse}" th:action="@{/courselecturer/save}"method="post">  
-   
+   <table class="center">
+   <tr>
+   <td>
   <fieldset>  
      Lecturer Name <Select th:field= "*{lecturer.firstName}" >  
       <option th:value="${lname}" th:text="${lname}"></option> 
      </select> 
       
    </fieldset>
+   </td>
+   </tr>
+   <tr>
+   <td>
    <fieldset> 
      Course Name <select th:field="*{courses.courseName}" > 
        <option th:each="cname:${cnames}" th:value="${cname}" 
          th:text="${cname}"></option> 
      </select> 
    </fieldset> 
+   </td>
+   </tr>
+   <tr>
+   <td>
    <fieldset> 
      <input type="submit" value ="Save"/> 
         &nbsp; &nbsp;   
      <input type="reset" value="Reset"/> 
    </fieldset> 
+   </td>
+   </tr>
+   </table>
  </form> 
   
    <br />
