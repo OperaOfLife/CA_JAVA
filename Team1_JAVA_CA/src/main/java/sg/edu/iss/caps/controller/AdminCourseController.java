@@ -58,8 +58,18 @@ public class AdminCourseController
 	
 	@RequestMapping("/delete/{courseId}")
 	public String deleteMethod(Model model, @PathVariable("courseId") String courseId) {
+		
+		String msg="Can not delete ... delete records from linked table first";
 		Course course = crepo.findById(courseId).get();
+		try
+		{
 		crepo.delete(course);
+		}
+		catch(Exception e)
+		{
+			model.addAttribute("errmsg", msg);
+			return "forward:/admincourse/list";
+		}
 		return "forward:/admincourse/list";
 	}
 			

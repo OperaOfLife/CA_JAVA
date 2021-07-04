@@ -63,8 +63,18 @@ public class AdminLecturerController
 	     @RequestMapping("/delete/{lecturerId}")
 	     public String deleteMethod(Model model, @PathVariable("lecturerId") String lecturerId) 
 	     { 
+	    	 String msg="Can not delete ... delete records from linked table first";
 	       Lecturer lecturer=lrepo.findById(lecturerId).get(); 
+	       
+	       try
+	       {
 	       lrepo.delete(lecturer); 
+	       }
+			catch(Exception e)
+			{
+				model.addAttribute("errmsg", msg);
+				return "forward:/adminlecturer/list";
+			}
 	         return "forward:/adminlecturer/list";
 	     }
 }
