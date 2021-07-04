@@ -54,7 +54,7 @@
 			<th>Enrolment Id</th>
 			<th>Course Code</th>
 			<th>Student ID</th>
-			<th>Student Grade</th>
+			<!-- <th>Student Grade</th> -->
 			<th>Enrollment Date</th>
 			<th>Status</th>
 			<th>Edit</th>
@@ -64,7 +64,7 @@
 			<td th:text="${Enrollment.enrolmentId}">Id</td>
 			<td th:text="${Enrollment.course.courseId}">Course Id</td>
 			<td th:text="${Enrollment.student.studentId}">Student Id</td>
-			<td th:text="${Enrollment.grade}">Student Grade</td>
+			<!-- <td th:text="${Enrollment.grade}">Student Grade</td> -->
 			<td th:text="${#dates.format(Enrollment.enrolmentDate, 'dd-MM-yyyy')}">Enrollment Date</td>
 			<td th:text="${Enrollment.status}">Status</td>
 			<td><a 

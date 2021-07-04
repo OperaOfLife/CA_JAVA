@@ -13,11 +13,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 
 	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/general.css" th:href="@{/css/general.css}" />
-
-
-    <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
-
-<link rel="stylesheet" type="text/css" media="all" 	href="../../css/student.css" th:href="@{/css/student.css}" />
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/student.css" th:href="@{/css/student.css}" />
 
 <title>View Courses</title>
 </head>
@@ -48,7 +46,7 @@
 </nav>
 
 
- <table>
+ <table class="center">
     
       <tr>
         <th>COURSE ID</th>
@@ -56,7 +54,7 @@
         <th>DESCRIPTION</th>
         <th>CREDITS</th>
         <th>DURATION (WEEKS)</th>
-        <th>START DATE</th>
+       
         <th>CLASS SIZE</th>
         <th>CURRENT ENROLLMENT</th>
         <th>ENROLL</th>
@@ -67,7 +65,7 @@
       <td th:text = "${course.description}"></td>
       <td th:text = "${course.credits}"></td>
       <td th:text = "${course.duration}"></td>
-      <td th:text = "${course.courseStartDate}"></td>
+      
       <td th:text = "${course.classSize}"></td>
       <td th:text = "${course.enrolment.size()}"></td>
       <!-- <td th:text = "${Enrolment.enrolmentDate}"></td> -->
@@ -78,7 +76,7 @@
 
 <div class="form-row my-auto justify-content-center align-items-center">
                         <div class="col-lg-12 " id="error_msg">
-                           <span th:text="${errmsg}"></</span>
+                           <h1 th:text="${errmsg}" style="text-align:center"></h1>>
                         </div>
                     </div>
 		

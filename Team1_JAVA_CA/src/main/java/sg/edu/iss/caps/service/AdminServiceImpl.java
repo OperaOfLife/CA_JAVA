@@ -30,6 +30,11 @@ public class AdminServiceImpl implements AdminService
 		erepo.save(enroll);
 		
 	}
+	
+	public Enrolment findEnrolmentByCourseAndStudentId(String studentid,String courseid)
+	{
+		return erepo.findEnrolmentByCourseAndStudentId(studentid, courseid);
+	}
 
 	@Transactional
 	public void deletefacility(Enrolment enroll) {

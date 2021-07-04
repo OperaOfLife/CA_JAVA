@@ -25,7 +25,18 @@ public interface CourseLecturerRepository extends JpaRepository<CourseLecturer, 
 	  public ArrayList<CourseLecturer> listCourseNamesByLecturerEmail  (@Param("email") String email);
 	 
 		
-	  @Query("SELECT cl FROM CourseLecturer cl WHERE cl.lecturer.lecturerId LIKE :lecturerid AND cl.courses.courseId LIKE :courseid") 
-	  public CourseLecturer findCourseByCourseAndLecturerId(@Param("lecturerid") String lecturerid, @Param("courseid") String courseid);
-	
+		
+		  @Query("SELECT cl FROM CourseLecturer cl WHERE cl.lecturer.firstName LIKE :firstname AND cl.courses.courseName LIKE :coursename") 
+		  public CourseLecturer findCourseByCourseAndLecturerName(@Param("firstname") String firstname, @Param("coursename") String coursename);
+		 
+	  
+	  
+		/*
+		 * @Query("SELECT l.lecturerId FROM CourseLecturer cl INNER JOIN cl.lecturer l WHERE l.lecturerId LIKE :lecturerid"
+		 * ) public String findLecturerIdByLecturerId(@Param("lecturerid")String id);
+		 * 
+		 * 
+		 * @Query("SELECT c.courseId FROM CourseLEcturer cl INNER JOIN cl.courses c WHERE c.courseId LIKE:courseid"
+		 * ) public String findCourseIdByCourseId(@Param("courseid") String id);
+		 */
 }

@@ -12,11 +12,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import sg.edu.iss.caps.domain.Course;
 import sg.edu.iss.caps.domain.Enrolment;
+import sg.edu.iss.caps.domain.Lecturer;
 import sg.edu.iss.caps.domain.Student;
 import sg.edu.iss.caps.repo.CourseRepository;
 import sg.edu.iss.caps.repo.StudentRepository;
 import sg.edu.iss.caps.service.AdminService;
 import sg.edu.iss.caps.service.AdminServiceImpl;
+import sg.edu.iss.caps.service.LecturerService;
+import sg.edu.iss.caps.service.StudentService;
 
 @Controller
 @RequestMapping("/adminenrolment")
@@ -25,13 +28,17 @@ public class AdminEnrolmentController
 	@Autowired
     AdminService as;
 	
+	@Autowired
+    StudentService ss;
+	
   @Autowired
   CourseRepository crepo;
   
   @Autowired
   StudentRepository srepo;
 	
-	
+  @Autowired
+	LecturerService lservice;
 	
 	@Autowired
 	public void setAdminService(AdminServiceImpl asi) {
@@ -49,15 +56,50 @@ public class AdminEnrolmentController
 	    return "add-enrolments";
 	  }
 	
+	
+	
+		
 	@RequestMapping(value = "/saveerm")
 	  public String savelist(@ModelAttribute("addenrollment") Enrolment addenrollment, 
-	      BindingResult bindingResult,  Model model) {
-	    if (bindingResult.hasErrors()) {
+	      BindingResult bindingResult,  Model model) 
+			{
+		
+		String msg="Course Already added !!!!";
+		String msg1="Successfully Added  !!!!";
+		
+	    if (bindingResult.hasErrors())
+	    {
 	      return "add-enrolments";
 	    }
-	    as.saveEnrollment(addenrollment);
-	    return "forward:/adminenrolment/list";
+	    if(as.findEnrolmentByCourseAndStudentId(addenrollment.getStudent().getStudentId(),
+	    		addenrollment.getCourse().getCourseId()) == null)
+	    {
+	    	Student student= ss.findStudentByName(addenrollment.getStudent().getFirstName());
+	    	student = ss.findStudentById(addenrollment.getStudent().getStudentId());
+	    	addenrollment.setStudent(student);
+	    	
+	    	Course course = lservice.findCourseByName(addenrollment.getCourse().getCourseName()); 
+	 	   course = lservice.findCourseById(course.getCourseId()); 
+	 	   addenrollment.setCourse(course);
+	 	   
+	 	  as.saveEnrollment(addenrollment);
+	 	  model.addAttribute("errmsg", msg1);
+		    return "forward:/adminenrolment/adderm";
+	    }
+	     else
+		  {
+			  model.addAttribute("errmsg", msg);
+			  return "forward:/adminenrolment/adderm";
+		  }
+	    
+	   
+	    
+	    
 	  }
+	
+	
+	
+	
 	
 	@RequestMapping("/Manageer")
 	public String me() {

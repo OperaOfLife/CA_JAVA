@@ -34,8 +34,7 @@ public class LecturerCourseLecturerController
 	   model.addAttribute("addcourse", new CourseLecturer());  
 	   //extract names from DB  
 	   ArrayList<String> clist = lservice.findAllCourseName();  
-	   //ArrayList<String> llist = lservice.findAllLecturerNames();  
-	   UserSession usession = (UserSession) session.getAttribute("usession"); 
+	    UserSession usession = (UserSession) session.getAttribute("usession"); 
 	   String currentusername=usession.getUser().getUsername(); 
 	   model.addAttribute("cnames", clist);  
 	   model.addAttribute("lname", lservice.findLecturerNamebyEmail(currentusername));  
@@ -44,37 +43,20 @@ public class LecturerCourseLecturerController
 	  }
 	
 		
-		/*
-		 * @RequestMapping(value = "/save") public String
-		 * saveCourseTaught(@ModelAttribute("addcourse") CourseLecturer courselecturer,
-		 * BindingResult bindingResult, Model model) { if (bindingResult.hasErrors()) {
-		 * return "add-course-lecturer-form"; } if
-		 * (lservice.findCourseByCourseAndLecturerId(courselecturer.getLecturer().
-		 * getLecturerId(), courselecturer.getCourses().getCourseId()) != null) return
-		 * "add-course-lecturer-form"; else {
-		 * 
-		 * // Lecturer Id Lecturer lecturer =
-		 * lservice.findLecturerByName(courselecturer.getLecturer().getFirstName());
-		 * lecturer = lservice.findLecturerById(lecturer.getLecturerId());
-		 * courselecturer.setLecturer(lecturer); // Course Id Course course =
-		 * lservice.findCourseByName(courselecturer.getCourses().getCourseName());
-		 * course = lservice.findCourseById(course.getCourseId());
-		 * courselecturer.setCourses(course);
-		 * 
-		 * lservice.addCousesTaught(courselecturer);
-		 * 
-		 * return "forward:/courselecturer/add"; } }
-		 */
-	
+		
 	
 	@RequestMapping(value = "/save") 
 	 public String saveCourseTaught(@ModelAttribute("addcourse") CourseLecturer courselecturer, 
-	   BindingResult bindingResult, Model model) { 
+	   BindingResult bindingResult, Model model)
+	{ 
+		String msg="Course Already added !!!!";
+		String msg1="Successfully Added  !!!!";
+		
 	  if (bindingResult.hasErrors()) 
 	  { 
 	   return "add-course-lecturer-form"; 
 	  } 
-	  if (lservice.findCourseByCourseAndLecturerId(courselecturer.getLecturer().getLecturerId(), courselecturer.getCourses().getCourseId()) == null) 
+	  if (lservice.findCourseByCourseAndLecturerName(courselecturer.getLecturer().getFirstName(), courselecturer.getCourses().getCourseName()) == null) 
 	    { 
 	 
 	   // Lecturer Id 
@@ -87,12 +69,13 @@ public class LecturerCourseLecturerController
 	   courselecturer.setCourses(course); 
 	 
 	   lservice.addCousesTaught(courselecturer); 
-	 
+	   model.addAttribute("errmsg", msg1);
 	   return "forward:/courselecturer/add"; 
 	  } 
 	  else
 	  {
-		  return "home-lecturer";
+		  model.addAttribute("errmsg", msg);
+		  return "forward:/courselecturer/add"; 
 	  }
 	 }
 	  
@@ -106,18 +89,7 @@ public class LecturerCourseLecturerController
 		model.addAttribute("ldata", course);
 		ArrayList<Integer>  count=new ArrayList<>();
 		
-		
-		
-		/*
-		 * for(CourseLecturer cl:course) {
-		 * 
-		 * List<Enrolment> enrol =cl.getCourses().getEnrolment();
-		 * 
-		 * count.add(enrol.size() ); }
-		 */
-		 
-		
-		
+				
 		  for(CourseLecturer cl:course)
 		    {
 		      List<Enrolment>  enrol =cl.getCourses().getEnrolment();
