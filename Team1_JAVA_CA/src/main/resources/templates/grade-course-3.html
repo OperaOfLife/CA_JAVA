@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" media="all" 	href="../../css/lecturer.css" th:href="@{/css/lecturer.css}" />
 <link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
 	
+<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
 
 <title>Grade A Course</title>
 </head>
@@ -57,7 +58,7 @@
 <form action="#"  
     th:action="@{/lecturerenrolment/updateGrades/} +${enrolment.enrolmentId}"  
     th:object="${enrolment}" method="post">
-   <table>
+   <table class="center">
    <tr>
    <td>
    Course Name</td>

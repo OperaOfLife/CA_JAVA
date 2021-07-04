@@ -85,7 +85,7 @@
 		</fieldset>
 		</td>
 		</tr>
-		<tr>
+		 <tr>
 		<td>Student Grade :</td>
 		<td>
 		<fieldset>
@@ -93,7 +93,7 @@
 			<p th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}"></p>
 		</fieldset>
 		</td>
-		</tr>
+		</tr> 
 		<tr>
 		<td>Enrollment Date  :</td>
 		<td>
@@ -126,7 +126,7 @@
                     
                     <div class="form-row my-auto justify-content-center align-items-center">
                         <div class="col-lg-12 " id="error_msg">
-                            <!-- @ViewData["errmsg"] -->
+                            <h1 th:text="${errmsg}" style="text-align:center"></h1>
                        </div>
                        </div>
                        

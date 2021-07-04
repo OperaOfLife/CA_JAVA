@@ -31,7 +31,7 @@ public interface LecturerService {
 	public Course findCourseByName(String name);
 	public String findLecturerNamebyEmail(String email);
 	public List<CourseLecturer> listCourseNamesByLecturerEmail (String lectureremail);
-	public CourseLecturer findCourseByCourseAndLecturerId(String lecturerid,String courseid);
+	public CourseLecturer findCourseByCourseAndLecturerName(String lecturername,String coursename);
 	//public CourseLecturer findCourseByCourseAndLecturerId(String lecturerid,String courseid);
 	//Genesis Student Performace
 	public List<Enrolment> listAll(String keyword);

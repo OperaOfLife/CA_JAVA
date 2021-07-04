@@ -47,7 +47,7 @@ window.onload = function () {
             //alert("Please enter only letters  for First Name.");
             return false;
         }
-		else if (!desc.match(letters))
+		else if (desc.match(coursename))
         {
             error_elem.innerHTML = "<span style='font-size:30px'>Please enter only letters  for description.</span>";
 

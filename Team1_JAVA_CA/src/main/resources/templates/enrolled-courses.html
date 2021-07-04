@@ -16,8 +16,8 @@
 
 
     <link rel="stylesheet" type="text/css" media="all" 	href="../../css/home.css" th:href="@{/css/home.css}" />
-
-<link rel="stylesheet" type="text/css" media="all" 	href="../../css/student.css" th:href="@{/css/student.css}" />
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/admin-manage.css" th:href="@{/css/admin-manage.css}" />
+	<link rel="stylesheet" type="text/css" media="all" 	href="../../css/student.css" th:href="@{/css/student.css}" />
 
 <title>View Enrolled Courses</title>
 </head>
@@ -47,15 +47,15 @@
   </div>
 </nav>
 
-<h1>View Enrolled Courses</h1>
 
-<table border="1" style="border-collapse:collapse" width="100%">
+
+<table class="center">
 		<tr>
 			<th>Course Code</th>
 			<th>Course Name</th>
 			<th>Description</th>
 			<th>Course Credits</th>
-			<th>Start Date</th>
+			
 			<th>Duration(Days)</th>
 		</tr>
 		
@@ -64,7 +64,6 @@
 			<td><span th:text="${data.course.courseName}">Course Name</span></td>
 			<td><span th:text="${data.course.description}">Course Description</span></td>
 			<td><span th:text="${data.course.credits}">Course Credits</span></td>
-			<td><span th:text="${data.course.courseStartDate}">Course Start Date</span></td>
 			<td><span th:text="${data.course.duration}">Duration(Days)</span></td>			
 		</tr>
 		
@@ -72,9 +71,9 @@
 
 		<br>
 		<br>
-		<form>
+		<!-- <form>
 		<input type="button" value="Back" style="float:right;" onclick="history.back()"></input>
-		</form>
+		</form> -->
 
 <br />
 

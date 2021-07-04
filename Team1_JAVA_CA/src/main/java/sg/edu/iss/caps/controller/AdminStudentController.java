@@ -57,9 +57,19 @@ public class AdminStudentController
 		}
 		
 		@RequestMapping("/delete/{studentId}")
-		public String deleteMethod(Model model, @PathVariable("studentId") String studentId) {
+		public String deleteMethod(Model model, @PathVariable("studentId") String studentId) 
+		{
+			String msg="Can not delete ... delete records from linked table first";
 			Student student= srepo.findById(studentId).get();
+			try
+			{
 			srepo.delete(student);
+			}
+			catch(Exception e)
+			{
+				model.addAttribute("errmsg", msg);
+				return "forward:/adminstudent/list";
+			}
 			return "forward:/adminstudent/list";
 		}
 	

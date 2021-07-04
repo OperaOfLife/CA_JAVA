@@ -45,9 +45,9 @@ public class LecturerServiceImpl implements LecturerService {
 	 */
 	
 	@Transactional 
-	 public CourseLecturer findCourseByCourseAndLecturerId(String lecturerid, String courseid)
+	 public CourseLecturer findCourseByCourseAndLecturerName(String firstname, String coursename)
 	{ 
-	  return clrepo.findCourseByCourseAndLecturerId(lecturerid, courseid); 
+	  return clrepo.findCourseByCourseAndLecturerName(firstname,coursename); 
 	 }
 	
 	@Transactional 

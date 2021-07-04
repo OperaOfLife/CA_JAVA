@@ -15,4 +15,6 @@ public interface AdminService
 	public void saveEnrollment(Enrolment enroll);
 
 	public void deletefacility(Enrolment enroll);
+	
+	public Enrolment findEnrolmentByCourseAndStudentId(String studentid,String courseid);
 }
